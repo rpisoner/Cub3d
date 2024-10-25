@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 14:27:18 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/25 17:34:02 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/25 18:49:23 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,13 @@ void	move_player(t_player *player)
 	}
 	if (player->key_left)
 	{
-		player->x += cos_angle * speed;
-		player->y -= sin_angle * speed;
+		player->x += sin_angle * speed;
+		player->y -= cos_angle * speed;
 	}
 	if (player->key_right)
 	{
-		player->x -= cos_angle * speed;
-		player->y += sin_angle * speed;
+		player->x -= sin_angle * speed;
+		player->y += cos_angle * speed;
 	}
 }
 

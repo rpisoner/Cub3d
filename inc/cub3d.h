@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:19:57 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/25 17:46:28 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/25 18:30:05 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <stdbool.h>
 # include <unistd.h>
 # define _USE_MATH_DEFINES
-# define WIDTH 1280
-# define HEIGHT 720
+# define WIDTH 1500
+# define HEIGHT 1000
 # define BLOCK_SIZE 64
 # define W 119
 # define A 97
