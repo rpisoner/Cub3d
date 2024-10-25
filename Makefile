@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/10/14 15:01:10 by jolivare          #+#    #+#              #
-#    Updated: 2024/10/24 16:15:44 by jolivare         ###   ########.fr        #
+#    Created: 2024/10/25 12:23:04 by jolivare          #+#    #+#              #
+#    Updated: 2024/10/25 12:23:06 by jolivare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,4 +40,3 @@ fclean: clean
 c: all clean
 
 re: fclean all
-
