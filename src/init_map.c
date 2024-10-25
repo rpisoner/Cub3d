@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:56:47 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/24 13:18:29 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/25 15:51:19 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,21 @@ void	init_map(t_game *game, char *file)
 	game->map.raw_file = (char **)malloc(sizeof(char *) * (height + 1));
 	copy_file(game, file);
 	parse_config(game);
+}
+
+char **get_map(void)
+{
+	char	**map = malloc(sizeof(char *) * 11);
+	map[0] = "111111111111111";
+    map[1] = "100000000000001";
+    map[2] = "100000000000001";
+    map[3] = "100000100000001";
+    map[4] = "100000000000001";
+    map[5] = "100000010000001";
+    map[6] = "100001000000001";
+    map[7] = "100000000000001";
+    map[8] = "100000000000001";
+    map[9] = "111111111111111";
+    map[10] = NULL;
+    return (map);
 }
