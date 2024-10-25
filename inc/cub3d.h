@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:19:57 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/25 17:30:44 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/25 17:46:28 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	put_pixel(int x, int y, int color, t_game *game);
 int		draw_loop(t_game *game);
 void	draw_square(int x, int y, int size, int color, t_game *game);
 void	draw_map(t_game *game);
-void	draw_line(t_player *player, t_game *game, float start_x);
+void	draw_line(t_player *player, t_game *game, float start_x, int i);
 bool	touch(float px, float py, t_game *game);
 
 void	print_errors(int code);

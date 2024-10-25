@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:55:04 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/25 17:27:05 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/25 17:51:44 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,22 +44,39 @@ bool	touch(float px, float py, t_game *game)
 	return (false);
 }
 
-void	draw_line(t_player *player, t_game *game, float start_x)
+float	distance(float x, float y)
+{
+	return (sqrt(x * x + y * y));
+}
+
+void	draw_line(t_player *player, t_game *game, float start_x, int i)
 {
 	float	cos_angle;
 	float	sin_angle;
 	float	ray_x;
 	float	ray_y;
+	float	dist;
+	float	height;
+	int		start_y;
+	int		end;
 
 	cos_angle = cos(start_x);
 	sin_angle = sin(start_x);
 	ray_x = player->x;
 	ray_y = player->y;
-
 	while (!touch(ray_x, ray_y, game))
 	{
-		put_pixel(ray_x, ray_y, 0xFF0000, game);
+		// put_pixel(ray_x, ray_y, 0xFF0000, game);
 		ray_x += cos_angle;
 		ray_y += sin_angle;
+	}
+	dist = distance(ray_x - player->x, ray_y - player->y);
+	height = (BLOCK_SIZE / dist) * (WIDTH / 2);
+	start_y = (HEIGHT - height) / 2;
+	end	= start_y + height;
+	while (start_y < end)
+	{
+		put_pixel(i, start_y, 255, game);
+		start_y++;
 	}
 }

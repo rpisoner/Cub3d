@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:08:06 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/25 17:27:23 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/25 17:52:18 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,14 @@ int	draw_loop(t_game *game)
 	
 	move_player(player);
 	clear_image(game);
-	draw_square(player->x, player->y, 10, 0x00FF00, game);
-	draw_map(game);
+	// draw_square(player->x, player->y, 10, 0x00FF00, game);
+	// draw_map(game);
 	fraction = M_PI / 3 / WIDTH;
 	start_x = player->angle - M_PI / 6;
 	i = 0;
 	while (i < WIDTH)
 	{
-		draw_line(player, game, start_x);
+		draw_line(player, game, start_x, i);
 		start_x += fraction;
 		i++;
 	}
