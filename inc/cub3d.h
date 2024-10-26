@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:19:57 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/25 18:30:05 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/26 20:14:12 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@
 # include <stdbool.h>
 # include <unistd.h>
 # define _USE_MATH_DEFINES
-# define WIDTH 1500
-# define HEIGHT 1000
+# define MINIMAP_SCALE 0.3
+# define WIDTH 1280
+# define HEIGHT 720
 # define BLOCK_SIZE 64
 # define W 119
 # define A 97
@@ -30,6 +31,7 @@
 # define D 100
 # define LEFT 65361
 # define RIGHT 65363
+# define ESC 65307
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 33
 # endif
@@ -63,7 +65,6 @@ typedef struct s_map
 	int		y_size;
 } t_map;
 
-
 typedef struct s_game
 {
 	t_map		map;
@@ -75,6 +76,8 @@ typedef struct s_game
 	char		*west_texture;
 	int			floor_color;
 	int			ceiling_color;
+	int			mini_x;
+	int			mini_y;
 	int			size_line;
 	char		*data;
 	int			bpp;
@@ -87,6 +90,8 @@ void	init_map(t_game *game, char *file);
 void	init_window(t_game *game);
 void	init_player(t_player *player);
 char 	**get_map(void);
+
+int		exit_game(void);
 
 int		key_press(int keycode, t_player *player);
 int		key_release(int keycode, t_player *player);

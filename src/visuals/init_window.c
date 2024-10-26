@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:08:06 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/25 18:22:51 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/26 20:18:52 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	put_pixel(int x, int y, int color, t_game *game)
 {
 	int	index;
-	
+
 	if (x >= WIDTH || y >= HEIGHT || x < 0 || y < 0)
 		return ;
 	index = y * game->size_line + x * game->bpp / 8;
@@ -57,34 +57,38 @@ void	clear_image(t_game *game)
 }
 int	draw_loop(t_game *game)
 {
-	t_player *player = &game->player;
 	float	fraction;
 	float	start_x;
 	int		i;
-	
-	move_player(player);
+
+	move_player(&game->player);
 	clear_image(game);
 	fraction = M_PI / 3 / WIDTH;
-	start_x = player->angle - M_PI / 6;
+	start_x = game->player.angle - M_PI / 6;
 	i = 0;
 	while (i < WIDTH)
 	{
-		draw_line(player, game, start_x, i);
+		draw_line(&game->player, game, start_x, i);
 		start_x += fraction;
 		i++;
 	}
-	mlx_put_image_to_window(game->window.mlx, game->window.window, game->window.image, 0, 0);
+	draw_map(game);
+	mlx_put_image_to_window(game->window.mlx, \
+		game->window.window, game->window.image, 10, 10);
 	return (0);
 }
-
 
 void	init_window(t_game *game)
 {
 	init_player(&game->player);
 	game->map.map = get_map();
 	game->window.mlx = mlx_init();
-	game->window.window = mlx_new_window(game->window.mlx, WIDTH, HEIGHT, "jogo");
-	game->window.image = mlx_new_image(game->window.mlx, WIDTH, HEIGHT);
-	game->data = mlx_get_data_addr(game->window.image, &game->bpp, &game->size_line, &game->endian);
-	mlx_put_image_to_window(game->window.mlx, game->window.window, game->window.image, 0, 0);
+	game->window.window = mlx_new_window(game->window.mlx, \
+		WIDTH, HEIGHT, "jogo");
+	game->window.image = mlx_new_image(game->window.mlx, \
+		WIDTH, HEIGHT);
+	game->data = mlx_get_data_addr(game->window.image, \
+		&game->bpp, &game->size_line, &game->endian);
+	mlx_put_image_to_window(game->window.mlx, \
+		game->window.window, game->window.image, 0, 0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 14:27:18 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/25 18:49:23 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/26 20:16:14 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@ int	key_press(int keycode, t_player *player)
 		player->key_left = true;
 	if (keycode == D)
 		player->key_right = true;
-	if(keycode == LEFT)
+	if (keycode == LEFT)
 		player->left_rotation = true;
-	if(keycode == RIGHT)
+	if (keycode == RIGHT)
 		player->right_rotation = true;
+	if (keycode == ESC)
+		exit_game();
 	return (0);
 }
 
@@ -54,7 +56,7 @@ void	move_player(t_player *player)
 	float	sin_angle;
 
 	speed = 2;
-	angle_speed = 0.05;
+	angle_speed = 0.03;
 	cos_angle = cos(player->angle);
 	sin_angle = sin(player->angle);
 

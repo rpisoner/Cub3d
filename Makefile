@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+         #
+#    By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/25 12:23:04 by jolivare          #+#    #+#              #
-#    Updated: 2024/10/25 15:54:52 by jolivare         ###   ########.fr        #
+#    Updated: 2024/10/26 00:38:44 by jolivare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRC = src/init_map.c inc/get_next_line/get_next_line.c src/errors/print_errors.c
 
 OBJ = $(SRC:.c=.o)
 LIBFT = inc/libft/libft.a
+MLX = mlx/libmlx.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I inc -I inc/libft
 MLX_FLAGS = -L ./mlx -lmlx -lXext -lX11 -lm
@@ -28,11 +29,17 @@ $(LIBFT):
 	@$(MAKE) -sC inc/libft/
 	@printf "$(G)Libft:\t\tcompiled!📚$(END)\n"
 
-$(NAME): $(OBJ) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(MLX_FLAGS) $(LIBFT)
+$(MLX):
+	@printf "$(Y)Compiling mlx...$(END)\n"
+	@$(MAKE) -C mlx/
+	@printf "$(G)mlx:\t\tcompiled!🎮$(END)\n"
+
+$(NAME): $(OBJ) $(LIBFT) $(MLX)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(MLX_FLAGS) $(MLX) $(LIBFT)
 
 clean:
 	make clean -sC inc/libft/
+	make clean -sC mlx/
 	rm -f $(OBJ)
 
 fclean: clean
@@ -42,3 +49,9 @@ fclean: clean
 c: all clean
 
 re: fclean all
+
+r: all clean
+	@clear
+	@./$(NAME)
+
+.PHONY: all clean fclean re c
