@@ -6,7 +6,7 @@
 /*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:08:06 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/26 20:18:52 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/27 00:29:45 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ int	draw_loop(t_game *game)
 
 void	init_window(t_game *game)
 {
-	init_player(&game->player);
 	game->map.map = get_map();
+	init_player(game);
 	game->window.mlx = mlx_init();
 	game->window.window = mlx_new_window(game->window.mlx, \
 		WIDTH, HEIGHT, "jogo");

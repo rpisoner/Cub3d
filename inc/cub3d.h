@@ -6,7 +6,7 @@
 /*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:19:57 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/26 20:14:12 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/27 00:40:06 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <unistd.h>
 # define _USE_MATH_DEFINES
 # define MINIMAP_SCALE 0.3
-# define WIDTH 1280
+# define WIDTH 1500
 # define HEIGHT 720
 # define BLOCK_SIZE 64
 # define W 119
@@ -88,7 +88,7 @@ char	*get_next_line(int fd);
 
 void	init_map(t_game *game, char *file);
 void	init_window(t_game *game);
-void	init_player(t_player *player);
+void	init_player(t_game *game);
 char 	**get_map(void);
 
 int		exit_game(void);
