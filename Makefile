@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+         #
+#    By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/25 12:23:04 by jolivare          #+#    #+#              #
-#    Updated: 2024/10/26 00:38:44 by jolivare         ###   ########.fr        #
+#    Updated: 2024/10/28 17:07:34 by jolivare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 SRC = src/init_map.c inc/get_next_line/get_next_line.c src/errors/print_errors.c src/cub3d.c \
 		src/parser/parse_config.c utils/free.c src/visuals/init_window.c src/visuals/init_player.c \
-		src/visuals/draw.c \
+		src/visuals/draw.c src/visuals/draw_floor_ceiling.c \
 
 OBJ = $(SRC:.c=.o)
 LIBFT = inc/libft/libft.a

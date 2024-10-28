@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:55:04 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/26 20:18:38 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/28 16:50:41 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,17 @@ bool	touch(float px, float py, t_game *game)
 	x = px / BLOCK_SIZE;
 	y = py / BLOCK_SIZE;
 	if (game->map.map[y][x] == '1')
+	{
+		if (py - (y * BLOCK_SIZE) < 1)
+			game->orientation = 1;
+		else if (py - (y * BLOCK_SIZE) > BLOCK_SIZE - 1)
+			game->orientation = 2;
+		else if (px - (x * BLOCK_SIZE) < 1)
+            game->orientation = 3;
+        else if (px - (x * BLOCK_SIZE) > BLOCK_SIZE - 1)
+            game->orientation = 4;
 		return (true);
+	}
 	return (false);
 }
 
@@ -81,7 +91,7 @@ void	draw_line(t_player *player, t_game *game, float start_x, int i)
 	float	ray_x;
 	float	ray_y;
 	float	dist;
-	float	height;
+	int		color;
 	int		start_y;
 	int		end;
 
@@ -95,12 +105,19 @@ void	draw_line(t_player *player, t_game *game, float start_x, int i)
 		ray_y += sin_angle;
 	}
 	dist = fixed_distance(player->x, player->y, ray_x, ray_y, game);
-	height = (BLOCK_SIZE / dist) * (WIDTH / 2);
-	start_y = (HEIGHT - height) / 2;
-	end	= start_y + height;
+	start_y = (HEIGHT - ((BLOCK_SIZE / dist) * (WIDTH / 2))) / 2;
+	end	= start_y + ((BLOCK_SIZE / dist) * (WIDTH / 2));
+	if (game->orientation == 1)
+		color = COLOR_NORTH;
+	else if (game->orientation == 2)
+		color = COLOR_SOUTH;
+	else if (game->orientation == 3)
+		color = COLOR_EAST;
+	else if (game->orientation == 4)
+		color = COLOR_WEST;
 	while (start_y < end)
 	{
-		put_pixel(i, start_y, 255, game);
+		put_pixel(i, start_y, color, game);
 		start_y++;
 	}
 }

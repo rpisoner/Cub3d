@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:08:06 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/27 00:29:45 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/28 17:09:49 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int	draw_loop(t_game *game)
 
 	move_player(&game->player);
 	clear_image(game);
+	paint_sky_color(game);
+	paint_floor_color(game);
 	fraction = M_PI / 3 / WIDTH;
 	start_x = game->player.angle - M_PI / 6;
 	i = 0;

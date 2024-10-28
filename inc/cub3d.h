@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:19:57 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/27 00:40:06 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/28 17:09:13 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@
 # include <stdbool.h>
 # include <unistd.h>
 # define _USE_MATH_DEFINES
+#define COLOR_SKY    0x87CEEB // Azul claro para el cielo
+#define COLOR_FLOOR  0x8B4513 //
+# define COLOR_NORTH 0xFF0000  // Rojo para la pared del norte
+# define COLOR_SOUTH 0x00FF00  // Verde para la pared del sur
+# define COLOR_EAST  0x0000FF  // Azul para la pared del este
+# define COLOR_WEST  0xFFFF00  // Amarillo para la pared del oeste
 # define MINIMAP_SCALE 0.3
 # define WIDTH 1500
 # define HEIGHT 720
@@ -79,6 +85,7 @@ typedef struct s_game
 	int			mini_x;
 	int			mini_y;
 	int			size_line;
+	int			orientation;
 	char		*data;
 	int			bpp;
 	int			endian;
@@ -102,6 +109,8 @@ int		draw_loop(t_game *game);
 void	draw_square(int x, int y, int size, int color, t_game *game);
 void	draw_map(t_game *game);
 void	draw_line(t_player *player, t_game *game, float start_x, int i);
+void	paint_sky_color(t_game *game);
+void	paint_floor_color(t_game *game);
 bool	touch(float px, float py, t_game *game);
 
 void	print_errors(int code);
