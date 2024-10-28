@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:19:57 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/28 17:09:13 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/28 18:19:20 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@
 # define COLOR_SOUTH 0x00FF00  // Verde para la pared del sur
 # define COLOR_EAST  0x0000FF  // Azul para la pared del este
 # define COLOR_WEST  0xFFFF00  // Amarillo para la pared del oeste
+# define MINIMAP_BG_COLOR 0x808080
+# define MINIMAP_BG_WIDTH 300
+# define MINIMAP_BG_HEIGHT 200
 # define MINIMAP_SCALE 0.3
 # define WIDTH 1500
 # define HEIGHT 720
@@ -106,6 +109,7 @@ void	move_player(t_player *player);
 
 void	put_pixel(int x, int y, int color, t_game *game);
 int		draw_loop(t_game *game);
+void	draw_minimap_background(t_game *game, int x, int y);
 void	draw_square(int x, int y, int size, int color, t_game *game);
 void	draw_map(t_game *game);
 void	draw_line(t_player *player, t_game *game, float start_x, int i);
