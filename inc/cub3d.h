@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:19:57 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/28 18:19:20 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/28 18:22:58 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void	move_player(t_player *player);
 
 void	put_pixel(int x, int y, int color, t_game *game);
 int		draw_loop(t_game *game);
-void	draw_minimap_background(t_game *game, int x, int y);
+void	draw_minimap_background(t_game *game);
 void	draw_square(int x, int y, int size, int color, t_game *game);
 void	draw_map(t_game *game);
 void	draw_line(t_player *player, t_game *game, float start_x, int i);

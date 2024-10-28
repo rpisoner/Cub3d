@@ -6,11 +6,19 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 13:10:12 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/24 17:01:03 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/28 18:32:24 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
+
+// void	assign_color(t_game *game, char *str)
+// {
+// 	char	*aux;
+
+// 	aux = ft_split(str, ',');
+// 	game->
+// }
 
 void	parse_config(t_game *game)
 {

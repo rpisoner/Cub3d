@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:03:12 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/28 18:09:41 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/28 18:22:45 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,3 @@ void	paint_floor_color(t_game *game)
 			put_pixel(j, i, COLOR_FLOOR, game);
 	}
 }
-
-void draw_minimap_background(t_game *game, int x, int y) {
-    int i, j;
-
-    for (i = 0; i < MINIMAP_BG_HEIGHT; i++) {
-        for (j = 0; j < MINIMAP_BG_WIDTH; j++) {
-            put_pixel(x + j, y + i, MINIMAP_BG_COLOR, game);
-        }
-    }
-}
-

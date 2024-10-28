@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:55:04 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/28 18:19:03 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/28 18:23:11 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,27 @@ void	draw_player_on_minimap(t_game *game)
 	draw_square(player_x, player_y, 10, 0x00FF00, game);
 }
 
+void	draw_minimap_background(t_game *game)
+{
+	int	i;
+	int	j;
+	
+	i = -1;
+	while (++i < MINIMAP_BG_HEIGHT)
+	{
+		j = -1;
+		while (++j < MINIMAP_BG_WIDTH)
+			put_pixel(j, i, MINIMAP_BG_COLOR, game);
+	}
+}
+
 void	draw_map(t_game *game)
 {
 	int	color;
 	int	y;
 	int	x;
 
-	for (int i = 0; i < MINIMAP_BG_HEIGHT; i++) {
-        for (int j = 0; j < MINIMAP_BG_WIDTH; j++) {
-            put_pixel(j, i, MINIMAP_BG_COLOR, game);
-        }
-    }
+	draw_minimap_background(game);
 	color = 0xFF0000;
 	y = -1;
 	while (game->map.map[++y])
