@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:55:04 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/28 18:23:11 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/30 17:20:00 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	draw_minimap_background(t_game *game)
 	int	j;
 	
 	i = -1;
-	while (++i < MINIMAP_BG_HEIGHT)
+	while (++i < (game->map.y_size - 1) * MINIMAP_BLOCK_SIZE)
 	{
 		j = -1;
-		while (++j < MINIMAP_BG_WIDTH)
+		while (++j < game->map.x_size * MINIMAP_BLOCK_SIZE)
 			put_pixel(j, i, MINIMAP_BG_COLOR, game);
 	}
 }
@@ -51,7 +51,7 @@ void	draw_map(t_game *game)
 		while (game->map.map[y][++x])
 		{
 			if (game->map.map[y][x] == '1')
-				draw_square(x * 20, y * 20, 20, color, game);
+				draw_square(x * MINIMAP_BLOCK_SIZE, y * MINIMAP_BLOCK_SIZE, MINIMAP_BLOCK_SIZE, color, game);
 		}
 	}
 	draw_player_on_minimap(game);

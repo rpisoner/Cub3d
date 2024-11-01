@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:08:06 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/28 18:12:12 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/29 18:55:18 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,6 @@ void	draw_square(int x, int y, int size, int color, t_game *game)
 		put_pixel(x + i, y + size, color, game);
 }
 
-void	clear_image(t_game *game)
-{
-	int	y;
-	int	x;
-
-	y = -1;
-	while(++y < HEIGHT)
-	{
-		x = -1;
-		while (++x < WIDTH)
-			put_pixel(x, y, 0, game);
-	}
-}
 int	draw_loop(t_game *game)
 {
 	float	fraction;
@@ -62,7 +49,7 @@ int	draw_loop(t_game *game)
 	int		i;
 
 	move_player(&game->player);
-	clear_image(game);
+	mlx_clear_window(game->window.mlx, game->window.window);
 	paint_sky_color(game);
 	paint_floor_color(game);
 	fraction = M_PI / 3 / WIDTH;
@@ -82,7 +69,7 @@ int	draw_loop(t_game *game)
 
 void	init_window(t_game *game)
 {
-	game->map.map = get_map();
+	game->map.map = get_map(game);
 	init_player(game);
 	game->window.mlx = mlx_init();
 	game->window.window = mlx_new_window(game->window.mlx, \

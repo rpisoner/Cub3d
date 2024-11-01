@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:19:57 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/28 18:22:58 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/31 12:36:36 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,17 @@
 # include <stdbool.h>
 # include <unistd.h>
 # define _USE_MATH_DEFINES
-#define COLOR_SKY    0x87CEEB // Azul claro para el cielo
-#define COLOR_FLOOR  0x8B4513 //
-# define COLOR_NORTH 0xFF0000  // Rojo para la pared del norte
-# define COLOR_SOUTH 0x00FF00  // Verde para la pared del sur
-# define COLOR_EAST  0x0000FF  // Azul para la pared del este
-# define COLOR_WEST  0xFFFF00  // Amarillo para la pared del oeste
+#define COLOR_SKY    0x87CEEB
+#define COLOR_FLOOR  0x8B4513
+# define COLOR_NORTH 0xFF0000
+# define COLOR_SOUTH 0x00FF00
+# define COLOR_EAST  0x0000FF
+# define COLOR_WEST  0xFFFF00
 # define MINIMAP_BG_COLOR 0x808080
 # define MINIMAP_BG_WIDTH 300
 # define MINIMAP_BG_HEIGHT 200
 # define MINIMAP_SCALE 0.3
+# define MINIMAP_BLOCK_SIZE 20
 # define WIDTH 1500
 # define HEIGHT 720
 # define BLOCK_SIZE 64
@@ -72,6 +73,7 @@ typedef struct s_map
 	char	**raw_file;
 	char	**map;
 	int		y_size;
+	int		x_size;
 } t_map;
 
 typedef struct s_game
@@ -99,7 +101,8 @@ char	*get_next_line(int fd);
 void	init_map(t_game *game, char *file);
 void	init_window(t_game *game);
 void	init_player(t_game *game);
-char 	**get_map(void);
+void	assing_initial_angle(t_game *game);
+char 	**get_map(t_game *game);
 
 int		exit_game(void);
 

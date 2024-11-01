@@ -6,7 +6,7 @@
 /*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 14:27:18 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/27 11:05:11 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/29 18:47:58 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	search_player(t_game *game)
 		j = -1;
 		while (game->map.map[i][++j])
 		{
-			if (game->map.map[i][j] == 'P')
+			if (game->map.map[i][j] == 'N' || game->map.map[i][j] == 'S' || game->map.map[i][j] == 'E' || game->map.map[i][j] == 'W')
 			{
 				game->player.x = j * BLOCK_SIZE;
 				game->player.y = i * BLOCK_SIZE;
@@ -115,7 +115,8 @@ void	init_player(t_game *game)
 	game->player.x = WIDTH / 2;
 	game->player.y = HEIGHT / 2;
 	search_player(game);
-	game->player.angle = M_PI / 2;
+	game->player.angle = M_PI;
+	assing_initial_angle(game);
 	game->player.key_up = false;
 	game->player.key_down = false;
 	game->player.left_rotation = false;
