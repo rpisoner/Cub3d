@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:19:57 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/01 17:19:22 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/11/01 17:25:16 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ void	paint_sky_color(t_game *game);
 void	paint_floor_color(t_game *game);
 bool	touch(float px, float py, t_game *game);
 
-//COLISIONS
+//COLLISIONS
 int 	is_wall_up(t_game *game, int speed, float cos_angle, float sin_angle);
 int 	is_wall_down(t_game *game, int speed, float cos_angle, float sin_angle);
 int 	is_wall_left(t_game *game, int speed, float cos_angle, float sin_angle);
