@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:19:57 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/31 12:36:36 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/11/01 17:19:22 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int		exit_game(void);
 
 int		key_press(int keycode, t_player *player);
 int		key_release(int keycode, t_player *player);
-void	move_player(t_player *player);
+void	move_player(t_game *game);
 
 void	put_pixel(int x, int y, int color, t_game *game);
 int		draw_loop(t_game *game);
@@ -119,6 +119,12 @@ void	draw_line(t_player *player, t_game *game, float start_x, int i);
 void	paint_sky_color(t_game *game);
 void	paint_floor_color(t_game *game);
 bool	touch(float px, float py, t_game *game);
+
+//COLISIONS
+int 	is_wall_up(t_game *game, int speed, float cos_angle, float sin_angle);
+int 	is_wall_down(t_game *game, int speed, float cos_angle, float sin_angle);
+int 	is_wall_left(t_game *game, int speed, float cos_angle, float sin_angle);
+int 	is_wall_right(t_game *game, int speed, float cos_angle, float sin_angle);
 
 void	print_errors(int code);
 

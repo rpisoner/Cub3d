@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 14:27:18 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/29 18:47:58 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/11/01 17:22:37 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	key_release(int keycode, t_player *player)
 	return (0);
 }
 
-void	move_player(t_player *player)
+void	move_player(t_game *game)
 {
 	int		speed;
 	float	angle_speed;
@@ -57,36 +57,36 @@ void	move_player(t_player *player)
 
 	speed = 2;
 	angle_speed = 0.03;
-	cos_angle = cos(player->angle);
-	sin_angle = sin(player->angle);
+	cos_angle = cos(game->player.angle);
+	sin_angle = sin(game->player.angle);
 
-	if (player->left_rotation)
-		player->angle -= angle_speed;
-	if (player->right_rotation)
-		player->angle += angle_speed;
-	if (player->angle > 2 * M_PI)
-		player->angle = 0;
-	if (player->angle < 0)
-		player->angle = 2 * M_PI;
-	if (player->key_up)
+	if (game->player.left_rotation)
+		game->player.angle -= angle_speed;
+	if (game->player.right_rotation)
+		game->player.angle += angle_speed;
+	if (game->player.angle > 2 * M_PI)
+		game->player.angle = 0;
+	if (game->player.angle < 0)
+		game->player.angle = 2 * M_PI;
+	if (game->player.key_up && !is_wall_up(game, speed, cos_angle, sin_angle))
 	{
-		player->x += cos_angle * speed;
-		player->y += sin_angle * speed;
+		game->player.x += cos_angle * speed;
+		game->player.y += sin_angle * speed;
 	}
-	if (player->key_down)
+	if (game->player.key_down && !is_wall_down(game, speed, cos_angle, sin_angle))
 	{
-		player->x -= cos_angle * speed;
-		player->y -= sin_angle * speed;
+		game->player.x -= cos_angle * speed;
+		game->player.y -= sin_angle * speed;
 	}
-	if (player->key_left)
+	if (game->player.key_left && !is_wall_left(game, speed, cos_angle, sin_angle))
 	{
-		player->x += sin_angle * speed;
-		player->y -= cos_angle * speed;
+		game->player.x += sin_angle * speed;
+		game->player.y -= cos_angle * speed;
 	}
-	if (player->key_right)
+	if (game->player.key_right && !is_wall_right(game, speed, cos_angle, sin_angle))
 	{
-		player->x -= sin_angle * speed;
-		player->y += cos_angle * speed;
+		game->player.x -= sin_angle * speed;
+		game->player.y += cos_angle * speed;
 	}
 }
 

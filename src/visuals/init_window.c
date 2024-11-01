@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:08:06 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/29 18:55:18 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/11/01 17:07:23 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,28 @@ void	draw_square(int x, int y, int size, int color, t_game *game)
 		put_pixel(x + i, y + size, color, game);
 }
 
+void	clear_image(t_game *game)
+{
+	int	y;
+	int	x;
+
+	y = -1;
+	while(++y < HEIGHT)
+	{
+		x = -1;
+		while (++x < WIDTH)
+			put_pixel(x, y, 0, game);
+	}
+}
+
 int	draw_loop(t_game *game)
 {
 	float	fraction;
 	float	start_x;
 	int		i;
 
-	move_player(&game->player);
-	mlx_clear_window(game->window.mlx, game->window.window);
+	move_player(game);
+	clear_image(game);
 	paint_sky_color(game);
 	paint_floor_color(game);
 	fraction = M_PI / 3 / WIDTH;
