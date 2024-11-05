@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:19:57 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/01 17:25:16 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/11/05 12:04:49 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define MINIMAP_BG_COLOR 0x808080
 # define MINIMAP_BG_WIDTH 300
 # define MINIMAP_BG_HEIGHT 200
-# define MINIMAP_SCALE 0.3
+# define MINIMAP_SCALE 0.299
 # define MINIMAP_BLOCK_SIZE 20
 # define WIDTH 1500
 # define HEIGHT 720

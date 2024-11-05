@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:55:04 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/01 16:50:05 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/11/05 12:01:33 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ bool	touch(float px, float py, t_game *game)
 			game->orientation = 1;
 		else if (py - (y * BLOCK_SIZE) > BLOCK_SIZE - 1)
 			game->orientation = 2;
-		else if (px - (x * BLOCK_SIZE) < 1)
+		else if (px - (x * BLOCK_SIZE) <= 1)
             game->orientation = 3;
-        else if (px - (x * BLOCK_SIZE) > BLOCK_SIZE - 1)
+        else if (px - (x * BLOCK_SIZE) >= BLOCK_SIZE - 1)
             game->orientation = 4;
 		return (true);
 	}
