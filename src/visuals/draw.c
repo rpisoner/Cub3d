@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:55:04 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/05 12:01:33 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/11/05 12:40:56 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,13 @@ void	draw_minimap_background(t_game *game)
 void	draw_map(t_game *game)
 {
 	int	color;
+	int	door_color;
 	int	y;
 	int	x;
 
 	draw_minimap_background(game);
 	color = 0xFF0000;
+	door_color = 0x800080;
 	y = -1;
 	while (game->map.map[++y])
 	{
@@ -52,6 +54,8 @@ void	draw_map(t_game *game)
 		{
 			if (game->map.map[y][x] == '1')
 				draw_square(x * MINIMAP_BLOCK_SIZE, y * MINIMAP_BLOCK_SIZE, MINIMAP_BLOCK_SIZE, color, game);
+			if (game->map.map[y][x] == 'D')
+				draw_square(x * MINIMAP_BLOCK_SIZE, y * MINIMAP_BLOCK_SIZE, MINIMAP_BLOCK_SIZE, door_color, game);
 		}
 	}
 	draw_player_on_minimap(game);
@@ -76,6 +80,11 @@ bool	touch(float px, float py, t_game *game)
         else if (px - (x * BLOCK_SIZE) >= BLOCK_SIZE - 1)
             game->orientation = 4;
 		return (true);
+	}
+	else if (game->map.map[y][x] == 'D' && !game->door_open)
+	{
+		game->orientation = 5;
+		return(true);
 	}
 	return (false);
 }
@@ -130,6 +139,8 @@ void	draw_line(t_player *player, t_game *game, float start_x, int i)
 		color = COLOR_EAST;
 	else if (game->orientation == 4)
 		color = COLOR_WEST;
+	else if (game->orientation == 5 && !game->door_open)
+		color = COLOR_DOOR;
 	while (start_y < end)
 	{
 		put_pixel(i, start_y, color, game);

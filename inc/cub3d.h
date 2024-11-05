@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:19:57 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/05 12:04:49 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/11/05 12:49:48 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define COLOR_SOUTH 0x00FF00
 # define COLOR_EAST  0x0000FF
 # define COLOR_WEST  0xFFFF00
+# define COLOR_DOOR  0x800080
 # define MINIMAP_BG_COLOR 0x808080
 # define MINIMAP_BG_WIDTH 300
 # define MINIMAP_BG_HEIGHT 200
@@ -39,6 +40,7 @@
 # define A 97
 # define S 115
 # define D 100
+# define E 101
 # define LEFT 65361
 # define RIGHT 65363
 # define ESC 65307
@@ -63,6 +65,8 @@ typedef struct s_player
 	bool	key_down;
 	bool	key_left;
 	bool	key_right;
+	bool	key_door;
+	bool	key_door_pressed;
 
 	bool	left_rotation;
 	bool	right_rotation;
@@ -94,6 +98,7 @@ typedef struct s_game
 	char		*data;
 	int			bpp;
 	int			endian;
+	bool		door_open;
 } t_game;
 
 char	*get_next_line(int fd);
