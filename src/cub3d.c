@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:29:49 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/06 12:42:59 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/11/06 13:13:18 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,16 @@ int	exit_game(void)
 	exit (0);
 }
 
-int	mouse_detect(t_game *game)
+int	mouse_detect(int x, int y, t_game *game)
 {
-	(void)game;
-	printf("movimiento de raton detectado\n");
-	// mlx_mouse_move(game->window.mlx, game->window.window, WIDTH / 2, HEIGHT / 2);
+	float	angle_speed;	
+	
+	angle_speed = 0.02;
+	if (x > WIDTH / 2)
+		game->player.angle += angle_speed;
+	else if (x < WIDTH / 2)
+		game->player.angle -= angle_speed;
+	mlx_mouse_move(game->window.mlx, game->window.window, WIDTH / 2, HEIGHT / 2);
 	return (0);
 }
 
