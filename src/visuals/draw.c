@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:55:04 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/05 12:40:56 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/11/06 12:45:18 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	draw_map(t_game *game)
 		{
 			if (game->map.map[y][x] == '1')
 				draw_square(x * MINIMAP_BLOCK_SIZE, y * MINIMAP_BLOCK_SIZE, MINIMAP_BLOCK_SIZE, color, game);
-			if (game->map.map[y][x] == 'D')
+			if (game->map.map[y][x] == 'D' && !game->door_open)
 				draw_square(x * MINIMAP_BLOCK_SIZE, y * MINIMAP_BLOCK_SIZE, MINIMAP_BLOCK_SIZE, door_color, game);
 		}
 	}

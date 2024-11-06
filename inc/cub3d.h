@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:19:57 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/05 12:49:48 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/11/06 11:44:13 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,9 @@ char 	**get_map(t_game *game);
 
 int		exit_game(void);
 
-int		key_press(int keycode, t_player *player);
+int		key_press(int keycode, t_player *player, t_game *game);
 int		key_release(int keycode, t_player *player);
+int		key_door_press(int keycode, t_player *player);
 void	move_player(t_game *game);
 
 void	put_pixel(int x, int y, int color, t_game *game);

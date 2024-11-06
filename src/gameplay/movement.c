@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 12:52:56 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/05 12:59:38 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/11/06 12:12:34 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ void	move_player(t_game *game)
 		game->player.angle = 2 * M_PI;
 	if (game->player.key_door)
 	{
-		if (game->door_open == false)
-			game->door_open = true;
-		else if (game->door_open == true)
+		if (game->door_open == true)
 			game->door_open = false;
+		else if (game->door_open == false)
+			game->door_open = true;
 	}
 	if (game->player.key_up && !is_wall_up(game, speed, cos_angle, sin_angle))
 	{

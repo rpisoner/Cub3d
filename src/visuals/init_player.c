@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 14:27:18 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/05 12:57:12 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/11/06 11:39:47 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	init_player(t_game *game)
 	game->player.key_left = false;
 	game->player.key_right = false;
 	game->player.key_door = false;
+	game->door_open = false;
 	game->player.left_rotation = false;
 	game->player.right_rotation = false;
 }
