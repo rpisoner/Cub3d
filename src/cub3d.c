@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:29:49 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/06 13:13:18 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/11/06 14:49:02 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	exit_game(void)
 
 int	mouse_detect(int x, int y, t_game *game)
 {
+	(void)y;
 	float	angle_speed;	
 	
 	angle_speed = 0.02;

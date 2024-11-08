@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:55:04 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/06 12:45:18 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/11/06 15:02:14 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,14 @@ bool	touch(float px, float py, t_game *game)
 	y = py / BLOCK_SIZE;
 	if (game->map.map[y][x] == '1')
 	{
-		if (py - (y * BLOCK_SIZE) < 1)
+		if (py - (y * BLOCK_SIZE) <= 1)
 			game->orientation = 1;
-		else if (py - (y * BLOCK_SIZE) > BLOCK_SIZE - 1)
+		else if (py - (y * BLOCK_SIZE) >= BLOCK_SIZE - 1)
 			game->orientation = 2;
-		else if (px - (x * BLOCK_SIZE) <= 1)
-            game->orientation = 3;
-        else if (px - (x * BLOCK_SIZE) >= BLOCK_SIZE - 1)
-            game->orientation = 4;
+		else if (px - (x * BLOCK_SIZE) < 1)
+			game->orientation = 3;
+		else if (px - (x * BLOCK_SIZE) > BLOCK_SIZE - 1)
+			game->orientation = 4;
 		return (true);
 	}
 	else if (game->map.map[y][x] == 'D' && !game->door_open)
