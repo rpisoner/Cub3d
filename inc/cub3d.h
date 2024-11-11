@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:19:57 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/06 15:07:31 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/11/11 16:01:54 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 # include <math.h>
 # include <stdbool.h>
 # include <unistd.h>
+# define NORTH_WALL "textures/north.xpm"
+# define SOUTH_WALL "textures/south.xpm"
+# define WEST_WALL "textures/west.xpm"
+# define EAST_WALL "textures/east.xpm"
 # define _USE_MATH_DEFINES
 # define COLOR_SKY 0x87CEEB
 # define COLOR_FLOOR 0x8B4513
@@ -36,6 +40,7 @@
 # define WIDTH 1500
 # define HEIGHT 720
 # define BLOCK_SIZE 64
+# define TEXTURE_WIDTH 64
 # define W 119
 # define A 97
 # define S 115
@@ -85,10 +90,10 @@ typedef struct s_game
 	t_map		map;
 	t_window	window;
 	t_player	player;
-	char		*north_texture;
-	char		*south_texture;
-	char		*east_texture;
-	char		*west_texture;
+	void		*north_texture;
+	void		*south_texture;
+	void		*east_texture;
+	void		*west_texture;
 	int			floor_color;
 	int			ceiling_color;
 	int			mini_x;
@@ -115,9 +120,12 @@ int		key_press(int keycode, t_player *player, t_game *game);
 int		key_release(int keycode, t_player *player);
 void	move_player(t_game *game);
 
+void	init_textures(t_game *game);
+
 void	put_pixel(int x, int y, int color, t_game *game);
 int		draw_loop(t_game *game);
 void	draw_minimap_background(t_game *game);
+int		get_texture_color(void *texture, int x, int y, int width, int height);
 void	draw_square(int x, int y, int size, int color, t_game *game);
 void	draw_map(t_game *game);
 void	draw_line(t_player *player, t_game *game, float start_x, int i);

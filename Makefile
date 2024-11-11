@@ -6,7 +6,7 @@
 #    By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/25 12:23:04 by jolivare          #+#    #+#              #
-#    Updated: 2024/11/05 12:58:07 by jolivare         ###   ########.fr        #
+#    Updated: 2024/11/11 15:35:52 by jolivare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,13 @@ NAME = cub3d
 SRC = src/init_map.c inc/get_next_line/get_next_line.c src/errors/print_errors.c src/cub3d.c \
 		src/parser/parse_config.c utils/free.c src/visuals/init_window.c src/visuals/init_player.c \
 		src/visuals/draw.c src/visuals/draw_floor_ceiling.c  utils/assign_angle.c utils/collisions.c \
-		src/gameplay/movement.c src/gameplay/keyhook.c \
+		src/gameplay/movement.c src/gameplay/keyhook.c src/visuals/textures.c \
 
 OBJ = $(SRC:.c=.o)
 LIBFT = inc/libft/libft.a
 MLX = mlx/libmlx.a
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I inc -I inc/libft
+CFLAGS = -Wall -Wextra -Werror -I inc -I inc/libft -g3
 MLX_FLAGS = -L ./mlx -lmlx -lXext -lX11 -lm
 
 all: $(NAME)

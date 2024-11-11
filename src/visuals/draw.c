@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:55:04 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/06 15:02:14 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/11/11 16:08:43 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ bool	touch(float px, float py, t_game *game)
 	y = py / BLOCK_SIZE;
 	if (game->map.map[y][x] == '1')
 	{
-		if (py - (y * BLOCK_SIZE) <= 1)
+		if (py - (y * BLOCK_SIZE) < 1)
 			game->orientation = 1;
-		else if (py - (y * BLOCK_SIZE) >= BLOCK_SIZE - 1)
+		else if (py - (y * BLOCK_SIZE) > BLOCK_SIZE - 1)
 			game->orientation = 2;
 		else if (px - (x * BLOCK_SIZE) < 1)
 			game->orientation = 3;
@@ -118,6 +118,8 @@ void	draw_line(t_player *player, t_game *game, float start_x, int i)
 	int		color;
 	int		start_y;
 	int		end;
+	int		texture_x;
+	int		texture_y;
 
 	cos_angle = cos(start_x);
 	sin_angle = sin(start_x);
@@ -131,18 +133,21 @@ void	draw_line(t_player *player, t_game *game, float start_x, int i)
 	dist = fixed_distance(player->x, player->y, ray_x, ray_y, game);
 	start_y = (HEIGHT - ((BLOCK_SIZE / dist) * (WIDTH / 2))) / 2;
 	end	= start_y + ((BLOCK_SIZE / dist) * (WIDTH / 2));
-	if (game->orientation == 1)
-		color = COLOR_NORTH;
-	else if (game->orientation == 2)
-		color = COLOR_SOUTH;
-	else if (game->orientation == 3)
-		color = COLOR_EAST;
-	else if (game->orientation == 4)
-		color = COLOR_WEST;
-	else if (game->orientation == 5 && !game->door_open)
-		color = COLOR_DOOR;
+	if (game->orientation == 1 || game->orientation == 2)
+		texture_x = (int)ray_x % TEXTURE_WIDTH;
+	else
+		texture_x = (int)ray_y % TEXTURE_WIDTH;
 	while (start_y < end)
 	{
+		texture_y = (start_y - (HEIGHT - ((BLOCK_SIZE / dist) * (WIDTH / 2))) / 2);
+		if (game->orientation == 1)
+			color = get_texture_color(game->north_texture, texture_x, texture_y, TEXTURE_WIDTH, TEXTURE_WIDTH);
+		else if (game->orientation == 2)
+			color = get_texture_color(game->south_texture, texture_x, texture_y, TEXTURE_WIDTH, TEXTURE_WIDTH);
+		else if (game->orientation == 3)
+			color = get_texture_color(game->east_texture, texture_x, texture_y, TEXTURE_WIDTH, TEXTURE_WIDTH);
+		else if (game->orientation == 4)
+			color = get_texture_color(game->west_texture, texture_x, texture_y, TEXTURE_WIDTH, TEXTURE_WIDTH);
 		put_pixel(i, start_y, color, game);
 		start_y++;
 	}
