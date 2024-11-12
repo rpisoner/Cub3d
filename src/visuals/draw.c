@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:55:04 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/11 16:08:43 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/11/12 11:32:35 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,8 @@ void	draw_line(t_player *player, t_game *game, float start_x, int i)
 	int		end;
 	int		texture_x;
 	int		texture_y;
+	int		projected_height;
+	int		center_y;
 
 	cos_angle = cos(start_x);
 	sin_angle = sin(start_x);
@@ -131,15 +133,17 @@ void	draw_line(t_player *player, t_game *game, float start_x, int i)
 		ray_y += sin_angle;
 	}
 	dist = fixed_distance(player->x, player->y, ray_x, ray_y, game);
-	start_y = (HEIGHT - ((BLOCK_SIZE / dist) * (WIDTH / 2))) / 2;
-	end	= start_y + ((BLOCK_SIZE / dist) * (WIDTH / 2));
+	center_y = HEIGHT / 2;
+	projected_height = (int)((BLOCK_SIZE / dist) * (WIDTH / 2));
+	start_y = center_y - projected_height / 2;
+	end	= center_y + projected_height / 2;
 	if (game->orientation == 1 || game->orientation == 2)
 		texture_x = (int)ray_x % TEXTURE_WIDTH;
 	else
 		texture_x = (int)ray_y % TEXTURE_WIDTH;
 	while (start_y < end)
 	{
-		texture_y = (start_y - (HEIGHT - ((BLOCK_SIZE / dist) * (WIDTH / 2))) / 2);
+		texture_y = (start_y - center_y + projected_height / 2) * TEXTURE_WIDTH / projected_height;
 		if (game->orientation == 1)
 			color = get_texture_color(game->north_texture, texture_x, texture_y, TEXTURE_WIDTH, TEXTURE_WIDTH);
 		else if (game->orientation == 2)
