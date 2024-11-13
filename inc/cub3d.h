@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:19:57 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/11 16:01:54 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/11/13 16:53:58 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define SOUTH_WALL "textures/south.xpm"
 # define WEST_WALL "textures/west.xpm"
 # define EAST_WALL "textures/east.xpm"
+# define DOOR "textures/door.xpm"
 # define _USE_MATH_DEFINES
 # define COLOR_SKY 0x87CEEB
 # define COLOR_FLOOR 0x8B4513
@@ -94,6 +95,7 @@ typedef struct s_game
 	void		*south_texture;
 	void		*east_texture;
 	void		*west_texture;
+	void		*door_texture;
 	int			floor_color;
 	int			ceiling_color;
 	int			mini_x;

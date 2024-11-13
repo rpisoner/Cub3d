@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:06:10 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/11 16:04:45 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/11/13 16:56:08 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,12 @@ void	init_textures(t_game *game)
 	}
 	game->west_texture = mlx_xpm_file_to_image(game->window.mlx, WEST_WALL, &size, &size);
 	if (game->west_texture == NULL)
+	{
+		printf("No funciona\n");
+		exit (1);
+	}
+	game->door_texture = mlx_xpm_file_to_image(game->window.mlx, DOOR, &size, &size);
+	if (game->door_texture == NULL)
 	{
 		printf("No funciona\n");
 		exit (1);

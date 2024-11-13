@@ -6,7 +6,7 @@
 /*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:55:04 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/12 11:32:35 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/11/13 16:55:07 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,8 @@ void	draw_line(t_player *player, t_game *game, float start_x, int i)
 			color = get_texture_color(game->east_texture, texture_x, texture_y, TEXTURE_WIDTH, TEXTURE_WIDTH);
 		else if (game->orientation == 4)
 			color = get_texture_color(game->west_texture, texture_x, texture_y, TEXTURE_WIDTH, TEXTURE_WIDTH);
+		else if (game->orientation == 5)
+			color = get_texture_color(game->door_texture, texture_x, texture_y, TEXTURE_WIDTH, TEXTURE_WIDTH);
 		put_pixel(i, start_y, color, game);
 		start_y++;
 	}
