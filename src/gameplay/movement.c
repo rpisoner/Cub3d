@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 12:52:56 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/06 12:12:34 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/11/13 23:51:19 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	move_player(t_game *game)
 		game->player.angle = 0;
 	if (game->player.angle < 0)
 		game->player.angle = 2 * M_PI;
-	if (game->player.key_door)
+	if (game->player.key_door && is_door(game, speed, cos_angle, sin_angle))
 	{
 		if (game->door_open == true)
 			game->door_open = false;

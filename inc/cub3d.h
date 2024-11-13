@@ -6,7 +6,7 @@
 /*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:19:57 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/13 16:53:58 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/11/13 23:50:56 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,7 @@ int 	is_wall_up(t_game *game, int speed, float cos_angle, float sin_angle);
 int 	is_wall_down(t_game *game, int speed, float cos_angle, float sin_angle);
 int 	is_wall_left(t_game *game, int speed, float cos_angle, float sin_angle);
 int 	is_wall_right(t_game *game, int speed, float cos_angle, float sin_angle);
+int		is_door(t_game *game, int speed, float cos_angle, float sin_angle);
 
 void	print_errors(int code);
 
