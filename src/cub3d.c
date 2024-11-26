@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:29:49 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/11 16:09:52 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/11/25 23:35:26 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	exit_game(void)
 
 int	mouse_detect(int x, int y, t_game *game)
 {
-	(void)y;
 	float	angle_speed;	
-	
+	(void)y;
+
 	angle_speed = 0.02;
 	if (x > WIDTH / 2)
 		game->player.angle += angle_speed;
@@ -33,13 +33,12 @@ int	mouse_detect(int x, int y, t_game *game)
 
 int	main(int argc, char **argv)
 {
-	t_game game;
-	(void)argc;
-	(void)argv;
-	
-	game.door_open = false;
+	t_game	game;
+
+	init_game(&game);
+	//init_textures(&game);
 	init_window(&game);
-	init_textures(&game);
+	parse(&game, argc, argv);
 	mlx_mouse_hide(game.window.mlx, game.window.window);
 	mlx_mouse_move(game.window.mlx, game.window.window, WIDTH / 2, HEIGHT / 2);
 	mlx_hook(game.window.window, 6, 1L<<6, mouse_detect, &game);

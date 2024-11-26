@@ -1,50 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_player.c                                      :+:      :+:    :+:   */
+/*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/25 14:27:18 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/06 15:04:00 by jolivare         ###   ########.fr       */
+/*   Created: 2024/11/24 12:04:32 by rpisoner          #+#    #+#             */
+/*   Updated: 2024/11/26 12:14:48 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cub3d.h"
+#include "../inc/cub3d.h"
 
-void	search_player(t_game *game)
-{
-	int	i;
-	int	j;
-
-	i = -1;
-	while(game->map.map[++i])
-	{
-		j = -1;
-		while (game->map.map[i][++j])
-		{
-			if (game->map.map[i][j] == 'N' || game->map.map[i][j] == 'S' || game->map.map[i][j] == 'E' || game->map.map[i][j] == 'W')
-			{
-				game->player.x = j * BLOCK_SIZE;
-				game->player.y = i * BLOCK_SIZE;
-			}
-		}
-	}
-}
-
-void	init_player(t_game *game)
+static void	init_player(t_game *game)
 {
 	game->player.x = WIDTH / 2;
 	game->player.y = HEIGHT / 2;
-	search_player(game);
 	game->player.angle = M_PI;
-	assing_initial_angle(game);
 	game->player.key_up = false;
 	game->player.key_down = false;
 	game->player.key_left = false;
 	game->player.key_right = false;
 	game->player.key_door = false;
-	game->door_open = false;
 	game->player.left_rotation = false;
 	game->player.right_rotation = false;
+}
+
+void	init_game(t_game *game)
+{
+	game->north_texture = NULL;
+	game->south_texture = NULL;
+	game->east_texture = NULL;
+	game->west_texture = NULL;
+	game->floor_color = 0;
+	game->ceiling_color = 0;
+	game->map.textures_ready = false;
+	game->door_open = false;
+	init_player(game);
 }

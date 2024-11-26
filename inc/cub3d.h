@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:19:57 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/13 23:50:56 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/11/26 12:24:42 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,17 @@
 # define LEFT 65361
 # define RIGHT 65363
 # define ESC 65307
+# define M_PI		3.14159265358979323846	/* pi */
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 33
 # endif
 
-typedef struct	s_window
+typedef struct s_window
 {
 	void	*mlx;
 	void	*window;
 	void	*image;
-} t_window;
+}	t_window;
 
 typedef struct s_player
 {
@@ -76,15 +77,16 @@ typedef struct s_player
 
 	bool	left_rotation;
 	bool	right_rotation;
-} t_player;
+}	t_player;
 
 typedef struct s_map
 {
 	char	**raw_file;
 	char	**map;
+	bool	textures_ready;
 	int		y_size;
 	int		x_size;
-} t_map;
+}	t_map;
 
 typedef struct s_game
 {
@@ -106,15 +108,23 @@ typedef struct s_game
 	int			bpp;
 	int			endian;
 	bool		door_open;
-} t_game;
+}	t_game;
 
 char	*get_next_line(int fd);
 
-void	init_map(t_game *game, char *file);
+//MAP PARSING
+void	load_floor_color(t_game *game, int i);
+void	load_ceiling_color(t_game *game, int i);
+void	init_file(t_game *game, char *file);
+void	init_map(t_game *game, int i);
+void	init_file(t_game *game, char *file);
+bool	textures_ready(t_game *game);
+void	parse_config(t_game *game);
+void	parse(t_game *game, int argc, char **argv);
+
+//Initializers
+void	init_game(t_game *game);
 void	init_window(t_game *game);
-void	init_player(t_game *game);
-void	assing_initial_angle(t_game *game);
-char 	**get_map(t_game *game);
 
 int		exit_game(void);
 
@@ -136,16 +146,18 @@ void	paint_floor_color(t_game *game);
 bool	touch(float px, float py, t_game *game);
 
 //COLLISIONS
-int 	is_wall_up(t_game *game, int speed, float cos_angle, float sin_angle);
-int 	is_wall_down(t_game *game, int speed, float cos_angle, float sin_angle);
-int 	is_wall_left(t_game *game, int speed, float cos_angle, float sin_angle);
-int 	is_wall_right(t_game *game, int speed, float cos_angle, float sin_angle);
+int		is_wall_up(t_game *game, int speed, float cos_angle, float sin_angle);
+int		is_wall_down(t_game *game, int speed, float cos_angle, float sin_angle);
+int		is_wall_left(t_game *game, int speed, float cos_angle, float sin_angle);
+int		is_wall_right(t_game *game, int speed, float cos_angle,
+			float sin_angle);
 int		is_door(t_game *game, int speed, float cos_angle, float sin_angle);
 
 void	print_errors(int code);
 
-void	free_str(char **str);
+//DEV UTILS
+void	print_map(t_game *game);
 
-void	parse_config(t_game *game);
+void	free_str(char **str);
 
 #endif

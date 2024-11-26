@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:08:06 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/06 12:41:53 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/11/26 12:21:49 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	clear_image(t_game *game)
 	int	x;
 
 	y = -1;
-	while(++y < HEIGHT)
+	while (++y < HEIGHT)
 	{
 		x = -1;
 		while (++x < WIDTH)
@@ -83,8 +83,6 @@ int	draw_loop(t_game *game)
 
 void	init_window(t_game *game)
 {
-	game->map.map = get_map(game);
-	init_player(game);
 	game->window.mlx = mlx_init();
 	game->window.window = mlx_new_window(game->window.mlx, \
 		WIDTH, HEIGHT, "jogo");
