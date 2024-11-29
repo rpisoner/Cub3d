@@ -6,7 +6,7 @@
 /*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:56:47 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/29 12:49:40 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/11/29 14:43:15 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,26 +35,6 @@ static void	check_char(t_game *game, int i, int j, int *player_symbols)
 		*player_symbols += 1;
 	}
 }
-
-// static void	check_line(t_game *game, int i)
-// {
-// 	size_t	j;
-
-// 	j = 0;
-// 	if (i == 0 || game->map.map[i + 1] == NULL)
-// 	{
-// 		while (game->map.map[i][j] == 1 || game->map.map[i][j] == ' ')
-// 			j++;
-// 		if (j != ft_strlen(game->map.map[i]) - 1)
-// 			print_errors(11);
-// 	}
-// 	else
-// 	{
-		
-// 	}
-// }
-
-
 
 static void	check_valid_map(t_game *game)
 {
@@ -131,24 +111,3 @@ void	init_map(t_game *game, int i)
 	copy_map(game, i);
 	check_valid_map(game);
 }
-
-// char	**get_map(t_game *game)
-// {
-// 	char	**map;
-
-// 	map = malloc(sizeof(char *) * 11);
-// 	map[0] = "1111111111111111111111111111111";
-// 	map[1] = "1000000000000000D00000000000001";
-// 	map[2] = "1000000000000000111000000000001";
-// 	map[3] = "1000001000000010000000000000001";
-// 	map[4] = "1000000000000011111111111111111";
-// 	map[5] = "1000000100000000000000000000001";
-// 	map[6] = "1000010000000000000000000000001";
-// 	map[7] = "100000000N000011100001110000001";
-// 	map[8] = "1000000000000011100000000000001";
-// 	map[9] = "1111111111111111111111111111111";
-// 	map[10] = NULL;
-// 	game->map.y_size = 11;
-// 	game->map.x_size = ft_strlen(map[0]);
-// 	return (map);
-// }
