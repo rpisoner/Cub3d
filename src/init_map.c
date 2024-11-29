@@ -6,7 +6,7 @@
 /*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:56:47 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/26 16:38:13 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/11/29 10:56:32 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ static void	check_char(t_game *game, int i, int j, int *player_symbols)
 	{
 		game->player.x = j * BLOCK_SIZE;
 		game->player.y = i * BLOCK_SIZE;
-		if (c == 'S')
+		if (c == 'N')
 			game->player.angle = 3 * M_PI / 2;
-		else if (c == 'N')
+		else if (c == 'S')
 			game->player.angle = M_PI / 2;
 		else if (c == 'E')
 			game->player.angle = 0;
