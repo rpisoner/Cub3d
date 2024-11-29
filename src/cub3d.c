@@ -6,7 +6,7 @@
 /*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:29:49 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/25 23:35:26 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/11/29 11:31:25 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,15 @@ int	exit_game(void)
 int	mouse_detect(int x, int y, t_game *game)
 {
 	float	angle_speed;	
-	(void)y;
 
 	angle_speed = 0.02;
+	(void)y;
 	if (x > WIDTH / 2)
 		game->player.angle += angle_speed;
 	else if (x < WIDTH / 2)
 		game->player.angle -= angle_speed;
-	mlx_mouse_move(game->window.mlx, game->window.window, WIDTH / 2, HEIGHT / 2);
+	mlx_mouse_move(game->window.mlx, game->window.window,
+		WIDTH / 2, HEIGHT / 2);
 	return (0);
 }
 

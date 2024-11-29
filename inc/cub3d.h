@@ -6,7 +6,7 @@
 /*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:19:57 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/29 10:53:37 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/11/29 12:27:10 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 # define MINIMAP_BG_COLOR 0x808080
 # define MINIMAP_BG_WIDTH 300
 # define MINIMAP_BG_HEIGHT 200
-# define MINIMAP_SCALE 0.3
+# define MINIMAP_SCALE 0.299
 # define MINIMAP_BLOCK_SIZE 20
 # define WIDTH 1500
 # define HEIGHT 720
@@ -121,6 +121,7 @@ void	init_file(t_game *game, char *file);
 bool	textures_ready(t_game *game);
 void	parse_config(t_game *game);
 void	parse(t_game *game, int argc, char **argv);
+int		is_map_valid(char **map, int rows);
 
 //Initializers
 void	init_game(t_game *game);

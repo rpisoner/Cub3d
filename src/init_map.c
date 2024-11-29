@@ -6,7 +6,7 @@
 /*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:56:47 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/29 10:56:32 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/11/29 12:49:40 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ static void	check_char(t_game *game, int i, int j, int *player_symbols)
 // 	}
 // }
 
+
+
 static void	check_valid_map(t_game *game)
 {
 	int	i;
@@ -65,7 +67,6 @@ static void	check_valid_map(t_game *game)
 	while (game->map.map[i])
 	{
 		j = 0;
-		//check_line(game, i); Mapa rodeado de muros
 		while (game->map.map[i][j] != '\0')
 		{
 			check_char(game, i, j, &player_symbols);
@@ -75,21 +76,45 @@ static void	check_valid_map(t_game *game)
 	}
 	if (player_symbols != 1)
 		print_errors(7);
+	if (!is_map_valid(game->map.map, game->map.y_size))
+		print_errors(11);
+}
+
+int	longest_line(t_game *game)
+{
+	int	i;
+	int	actual_len;
+	int	len;
+
+	i = 0;
+	len = 0;
+	while (game->map.map[i])
+	{
+		actual_len = ft_strlen(game->map.map[i]);
+		if (actual_len > len)
+			len = actual_len;
+		i++;
+	}
+	return (len);
 }
 
 static void	copy_map(t_game *game, int i)
 {
 	int	j;
+	int	line_len;
 
 	j = 0;
 	while (game->map.raw_file[i])
 	{
 		game->map.map[j] = game->map.raw_file[i];
-		game->map.map[j][ft_strlen(game->map.raw_file[i]) - 1] = '\0';
+		line_len = ft_strlen(game->map.raw_file[i]);
+		game->map.map[j][line_len - 1] = '\0';
 		i++;
 		j++;
 	}
 	game->map.map[j] = NULL;
+	game->map.y_size = j;
+	game->map.x_size = longest_line(game);
 	print_map(game);
 }
 

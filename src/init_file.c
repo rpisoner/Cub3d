@@ -6,7 +6,7 @@
 /*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 13:30:24 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/11/24 18:51:11 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/11/29 12:49:45 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void	init_file(t_game *game, char *file)
 	height = 1;
 	while (line != NULL)
 	{
-		line = get_next_line(fd);
 		free(line);
+		line = get_next_line(fd);
 		height++;
 	}
 	close(fd);
