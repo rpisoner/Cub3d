@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:55:04 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/13 16:55:07 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/01 08:36:14 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	draw_minimap_background(t_game *game)
 {
 	int	i;
 	int	j;
-	
+
 	i = -1;
-	while (++i < (game->map.y_size - 1) * MINIMAP_BLOCK_SIZE)
+	while (++i < game->map.y_size * MINIMAP_BLOCK_SIZE)
 	{
 		j = -1;
 		while (++j < game->map.x_size * MINIMAP_BLOCK_SIZE)
