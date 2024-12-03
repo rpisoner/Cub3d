@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:55:04 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/03 11:10:20 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/03 13:02:44 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,6 @@ void	draw_map(t_game *game)
 			if (game->map.map[y][x] == '1')
 				draw_square(x * MINIMAP_BLOCK_SIZE, y * MINIMAP_BLOCK_SIZE,
 					MINIMAP_BLOCK_SIZE, color, game);
-			if (game->map.map[y][x] == 'D' && !game->door_open)
-				draw_square(x * MINIMAP_BLOCK_SIZE, y * MINIMAP_BLOCK_SIZE,
-					MINIMAP_BLOCK_SIZE, door_color, game);
 		}
 	}
 	draw_player_on_minimap(game);
@@ -82,9 +79,10 @@ bool	touch(t_game *game)
 			game->orientation = 4;
 		return (true);
 	}
-	else if (game->map.map[y][x] == 'D' && !game->door_open)
+	else if (game->map.map[y][x] == 'D')
 	{
-		game->orientation = 5;
+		game->door[0].open = true;
+		check_door_touch(x, y, game);
 		return (true);
 	}
 	return (false);

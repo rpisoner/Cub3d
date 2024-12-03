@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:56:47 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/29 14:43:15 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/12/03 12:50:34 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	check_char(t_game *game, int i, int j, int *player_symbols)
 
 	c = game->map.map[i][j];
 	if (c != '1' && c != '0' && c != 'N' && c != 'S' && c != 'W' && c != 'E'
-		&& c != ' ')
+		&& c != ' ' && c != 'D')
 		print_errors(8);
 	if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
 	{
@@ -34,6 +34,7 @@ static void	check_char(t_game *game, int i, int j, int *player_symbols)
 			game->player.angle = M_PI;
 		*player_symbols += 1;
 	}
+	init_door(game);
 }
 
 static void	check_valid_map(t_game *game)

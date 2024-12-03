@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:19:57 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/03 11:08:29 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/03 12:56:29 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@
 # define LEFT 65361
 # define RIGHT 65363
 # define ESC 65307
-# define M_PI		3.14159265358979323846	/* pi */
+# define M_PI 3.14159265358979323846	/* pi */
 # define MAX_DISTANCE_SQ 100.0
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 33
@@ -97,12 +97,19 @@ typedef struct s_map
 	int		x_size;
 }	t_map;
 
+typedef struct s_door
+{
+	int		x;
+	int		y;
+	bool	open;
+}	t_door;
 typedef struct s_game
 {
 	t_map		map;
 	t_window	window;
 	t_player	player;
 	t_vars		vars;
+	t_door		*door;
 	void		*north_texture;
 	void		*south_texture;
 	void		*east_texture;
@@ -114,10 +121,10 @@ typedef struct s_game
 	int			mini_y;
 	int			size_line;
 	int			orientation;
+	int			door_count;
 	char		*data;
 	int			bpp;
 	int			endian;
-	bool		door_open;
 	int			texture_x;
 	int			texture_y;
 }	t_game;
@@ -156,6 +163,7 @@ void	init_south_texture(t_game *game, int size);
 void	init_east_texture(t_game *game, int size);
 void	init_west_texture(t_game *game, int size);
 void	init_door_texture(t_game *game, int size);
+void	init_door(t_game *game);
 void	render(t_game *game, float dist);
 void	draw_square(int x, int y, int size, int color, t_game *game);
 void	draw_map(t_game *game);
@@ -170,9 +178,9 @@ bool	touch(t_game *game);
 int		is_wall_up(t_game *game, int speed, float cos_angle, float sin_angle);
 int		is_wall_down(t_game *game, int speed, float cos_angle, float sin_angle);
 int		is_wall_left(t_game *game, int speed, float cos_angle, float sin_angle);
-int		is_wall_right(t_game *game, int speed, float cos_angle,
-			float sin_angle);
+int		is_wall_right(t_game *game, int speed, float cos_angle, float sin_angle);
 int		is_door(t_game *game, int speed, float cos_angle, float sin_angle);
+void	check_door_touch(int ray_x, int ray_y, t_game *game);
 
 void	check_angle(t_game *game);
 void	print_errors(int code);

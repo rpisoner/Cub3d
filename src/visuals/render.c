@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 16:48:52 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/03 10:52:36 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/03 11:59:00 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ static void	render_raycast(t_game *game, int start_y, int end)
 
 void	render(t_game *game, float dist)
 {
-	int		start_y;
-	int		end;
+	int	start_y;
+	int	end;
 
 	game->vars.center_y = HEIGHT / 2;
 	game->vars.projected_height = (int)((BLOCK_SIZE / dist) * (WIDTH / 2));
