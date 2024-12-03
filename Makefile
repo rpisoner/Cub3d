@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+         #
+#    By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/25 12:23:04 by jolivare          #+#    #+#              #
-#    Updated: 2024/11/29 12:22:51 by rpisoner         ###   ########.fr        #
+#    Updated: 2024/12/03 11:04:05 by jolivare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ SRC = src/init_map.c inc/get_next_line/get_next_line.c src/errors/print_errors.c
 		src/parser/parse_config.c utils/free.c src/visuals/init_window.c src/valid_map.c \
 		src/visuals/draw.c src/visuals/draw_floor_ceiling.c utils/collisions.c \
 		src/gameplay/movement.c src/gameplay/keyhook.c src/visuals/textures.c \
-		src/init_file.c src/init_game.c src/parser/parse_config2.c src/parser/parse.c utils/dev_utils.c
+		src/init_file.c src/init_game.c src/parser/parse_config2.c src/parser/parse.c utils/dev_utils.c \
+		utils/assign_textures.c utils/distance.c src/visuals/render.c utils/check_angle.c
 
 OBJ = $(SRC:.c=.o)
 LIBFT = inc/libft/libft.a

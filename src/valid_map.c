@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:50:15 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/11/29 13:05:04 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/12/03 11:01:05 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	is_out_of_bounds(int x, int y, int rows, char **map)
 	return (x < 0 || y < 0 || x >= rows || y >= (int)ft_strlen(map[x]));
 }
 
-// Function to check if rows are surrounded by walls
 int	are_rows_valid(char **map, int rows)
 {
 	int	i;
@@ -29,29 +28,26 @@ int	are_rows_valid(char **map, int rows)
 		row_length = ft_strlen(map[i]);
 		if ((map[i][0] != ' ' && map[i][0] != '1')
 			|| map[i][row_length - 1] != '1')
-			return (0); // Row not surrounded by walls
+			return (0);
 		i++;
 	}
 	return (1);
 }
 
-// Recursive flood-fill function
-int flood_fill(char **map, int x, int y, int rows, int **visited)
+int	flood_fill(char **map, int x, int y, int rows, int **visited)
 {
 	if (is_out_of_bounds(x, y, rows, map)
 		|| map[x][y] == ' ' || map[x][y] == '\0')
-		return (0); // Reached outside the map boundary or invalid space
+		return (0);
 	if (map[x][y] == '1' || visited[x][y])
-		return (1); // Hit a wall or already visited
-    visited[x][y] = 1; // Mark the current cell as visited
-    // Explore in all four directions
+		return (1);
+	visited[x][y] = 1;
 	return (flood_fill(map, x - 1, y, rows, visited)
 		&& flood_fill(map, x + 1, y, rows, visited)
 		&& flood_fill(map, x, y - 1, rows, visited)
 		&& flood_fill(map, x, y + 1, rows, visited));
 }
 
-// Function to validate the map
 int	is_map_valid(char **map, int rows)
 {
 	int	**visited;
@@ -59,24 +55,20 @@ int	is_map_valid(char **map, int rows)
 	int	i;
 	int	j;
 	int	k;
-	
-    // Check if all rows are surrounded by walls
+
 	if (!are_rows_valid(map, rows))
 	{
 		printf("HERE\n");
-		return (0); // Horizontal boundary violation
+		return (0);
 	}
-
 	i = 0;
 	visited = malloc(rows * sizeof(int *));
-    // Allocate a visited matrix
 	while (i < rows)
 	{
 		row_length = ft_strlen(map[i]);
 		visited[i] = ft_calloc(row_length, sizeof(int));
 		i++;
 	}
-
 	i = 0;
 	while (i < rows)
 	{
@@ -86,8 +78,8 @@ int	is_map_valid(char **map, int rows)
 			if ((map[i][j] == '0' || ft_strchr("NSEW", map[i][j]))
 				&& !visited[i][j])
 			{
-				if (!flood_fill(map, i, j, rows, visited)) {
-					// Free memory and return invalid
+				if (!flood_fill(map, i, j, rows, visited))
+				{
 					k = 0;
 					while (k < rows)
 					{
@@ -96,14 +88,13 @@ int	is_map_valid(char **map, int rows)
 					}
 					free(visited);
 					printf("AQUÍ\n");
-					return (0); // Map is not valid
+					return (0);
 				}
 			}
 			j++;
 		}
 		i++;
 	}
-
 	i = 0;
 	while (i < rows)
 	{
@@ -111,5 +102,5 @@ int	is_map_valid(char **map, int rows)
 		i++;
 	}
 	free(visited);
-	return (1); // Map is valid
+	return (1);
 }

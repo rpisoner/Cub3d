@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:19:57 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/29 12:27:10 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/12/03 10:53:04 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 # define WEST_WALL "textures/west.xpm"
 # define EAST_WALL "textures/east.xpm"
 # define DOOR "textures/door.xpm"
-# define _USE_MATH_DEFINES
 # define COLOR_SKY 0x87CEEB
 # define COLOR_FLOOR 0x8B4513
 # define COLOR_NORTH 0xFF0000
@@ -36,7 +35,7 @@
 # define MINIMAP_BG_COLOR 0x808080
 # define MINIMAP_BG_WIDTH 300
 # define MINIMAP_BG_HEIGHT 200
-# define MINIMAP_SCALE 0.299
+# define MINIMAP_SCALE 0.3
 # define MINIMAP_BLOCK_SIZE 20
 # define WIDTH 1500
 # define HEIGHT 720
@@ -51,6 +50,7 @@
 # define RIGHT 65363
 # define ESC 65307
 # define M_PI		3.14159265358979323846	/* pi */
+# define MAX_DISTANCE_SQ 100.0
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 33
 # endif
@@ -61,6 +61,15 @@ typedef struct s_window
 	void	*window;
 	void	*image;
 }	t_window;
+
+typedef struct s_vars
+{
+	float	ray_x;
+	float	ray_y;
+	int		projected_height;
+	int		center_y;
+	int		index;
+}	t_vars;
 
 typedef struct s_player
 {
@@ -93,6 +102,7 @@ typedef struct s_game
 	t_map		map;
 	t_window	window;
 	t_player	player;
+	t_vars		vars;
 	void		*north_texture;
 	void		*south_texture;
 	void		*east_texture;
@@ -108,6 +118,8 @@ typedef struct s_game
 	int			bpp;
 	int			endian;
 	bool		door_open;
+	int			texture_x;
+	int			texture_y;
 }	t_game;
 
 char	*get_next_line(int fd);
@@ -127,7 +139,7 @@ int		is_map_valid(char **map, int rows);
 void	init_game(t_game *game);
 void	init_window(t_game *game);
 
-int		exit_game(void);
+int		exit_game();
 
 int		key_press(int keycode, t_player *player, t_game *game);
 int		key_release(int keycode, t_player *player);
@@ -138,13 +150,21 @@ void	init_textures(t_game *game);
 void	put_pixel(int x, int y, int color, t_game *game);
 int		draw_loop(t_game *game);
 void	draw_minimap_background(t_game *game);
-int		get_texture_color(void *texture, int x, int y, int width, int height);
+int		get_texture_color(void *texture, t_game *game, int width, int height);
+void	init_north_texture(t_game *game, int size);
+void	init_south_texture(t_game *game, int size);
+void	init_east_texture(t_game *game, int size);
+void	init_west_texture(t_game *game, int size);
+void	init_door_texture(t_game *game, int size);
+void	render(t_game *game, float dist);
 void	draw_square(int x, int y, int size, int color, t_game *game);
 void	draw_map(t_game *game);
-void	draw_line(t_player *player, t_game *game, float start_x, int i);
+void	draw_line(t_game *game, float start_x);
 void	paint_sky_color(t_game *game);
 void	paint_floor_color(t_game *game);
-bool	touch(float px, float py, t_game *game);
+float	distance(float x, float y);
+float	fixed_distance(float x1, float y1, t_game *game);
+bool	touch(t_game *game);
 
 //COLLISIONS
 int		is_wall_up(t_game *game, int speed, float cos_angle, float sin_angle);
@@ -154,6 +174,7 @@ int		is_wall_right(t_game *game, int speed, float cos_angle,
 			float sin_angle);
 int		is_door(t_game *game, int speed, float cos_angle, float sin_angle);
 
+void	check_angle(t_game *game);
 void	print_errors(int code);
 
 //DEV UTILS

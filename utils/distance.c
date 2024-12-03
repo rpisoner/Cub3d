@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dev_utils.c                                        :+:      :+:    :+:   */
+/*   distance.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/24 19:35:45 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/11/29 15:49:25 by jolivare         ###   ########.fr       */
+/*   Created: 2024/11/29 15:56:44 by jolivare          #+#    #+#             */
+/*   Updated: 2024/11/29 16:43:26 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-void	print_map(t_game *game)
+float	distance(float x, float y)
 {
-	int	i;
+	return (sqrt(x * x + y * y));
+}
 
-	i = 0;
-	while (game->map.map[i])
-	{
-		printf("%s\n", game->map.map[i]);
-		i++;
-	}
+float	fixed_distance(float x1, float y1, t_game *game)
+{
+	float	delta_x;
+	float	delta_y;
+	float	angle;
+	float	fix_dist;
+
+	delta_x = game->vars.ray_x - x1;
+	delta_y = game->vars.ray_y - y1;
+	angle = atan2(delta_y, delta_x) - game->player.angle;
+	fix_dist = distance(delta_x, delta_y) * cos(angle);
+	return (fix_dist);
 }

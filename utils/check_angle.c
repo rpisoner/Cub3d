@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dev_utils.c                                        :+:      :+:    :+:   */
+/*   check_angle.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/24 19:35:45 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/11/29 15:49:25 by jolivare         ###   ########.fr       */
+/*   Created: 2024/11/29 15:03:30 by jolivare          #+#    #+#             */
+/*   Updated: 2024/11/29 15:49:44 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-void	print_map(t_game *game)
+void	check_angle(t_game *game)
 {
-	int	i;
+	float	angle_speed;
 
-	i = 0;
-	while (game->map.map[i])
-	{
-		printf("%s\n", game->map.map[i]);
-		i++;
-	}
+	angle_speed = 0.03;
+	if (game->player.left_rotation)
+		game->player.angle -= angle_speed;
+	if (game->player.right_rotation)
+		game->player.angle += angle_speed;
+	if (game->player.angle > 2 * M_PI)
+		game->player.angle = 0;
+	if (game->player.angle < 0)
+		game->player.angle = 2 * M_PI;
 }

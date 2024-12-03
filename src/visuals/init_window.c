@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   init_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:08:06 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/26 12:21:49 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/12/03 11:02:12 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../../inc/cub3d.h"
 
@@ -60,7 +61,6 @@ int	draw_loop(t_game *game)
 {
 	float	fraction;
 	float	start_x;
-	int		i;
 
 	move_player(game);
 	clear_image(game);
@@ -68,12 +68,12 @@ int	draw_loop(t_game *game)
 	paint_floor_color(game);
 	fraction = M_PI / 3 / WIDTH;
 	start_x = game->player.angle - M_PI / 6;
-	i = 0;
-	while (i < WIDTH)
+	game->vars.index = 0;
+	while (game->vars.index < WIDTH)
 	{
-		draw_line(&game->player, game, start_x, i);
+		draw_line(game, start_x);
 		start_x += fraction;
-		i++;
+		game->vars.index++;
 	}
 	draw_map(game);
 	mlx_put_image_to_window(game->window.mlx, \
