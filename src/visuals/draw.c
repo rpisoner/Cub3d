@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:55:04 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/03 11:04:47 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/03 11:10:20 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	draw_minimap_background(t_game *game)
 	int	j;
 
 	i = -1;
-	while (++i < (game->map.y_size - 1) * MINIMAP_BLOCK_SIZE)
+	while (++i < game->map.y_size * MINIMAP_BLOCK_SIZE)
 	{
 		j = -1;
 		while (++j < game->map.x_size * MINIMAP_BLOCK_SIZE)

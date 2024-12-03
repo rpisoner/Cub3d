@@ -6,7 +6,7 @@
 #    By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/25 12:23:04 by jolivare          #+#    #+#              #
-#    Updated: 2024/12/03 11:04:05 by jolivare         ###   ########.fr        #
+#    Updated: 2024/12/03 11:11:08 by jolivare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,6 +90,6 @@ re: fclean all
 
 r: all clean
 	@clear
-	@./$(NAME)
+	@./$(NAME) maps/map.cub
 
 .PHONY: all clean fclean re c

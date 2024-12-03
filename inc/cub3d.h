@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:19:57 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/03 10:53:04 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/03 11:08:29 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ int		is_map_valid(char **map, int rows);
 void	init_game(t_game *game);
 void	init_window(t_game *game);
 
-int		exit_game();
+int		exit_game(void);
 
 int		key_press(int keycode, t_player *player, t_game *game);
 int		key_release(int keycode, t_player *player);
