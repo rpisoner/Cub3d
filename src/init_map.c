@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:56:47 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/04 11:37:22 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/04 17:55:49 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ static void	copy_map(t_game *game, int i)
 	{
 		game->map.map[j] = game->map.raw_file[i];
 		line_len = ft_strlen(game->map.raw_file[i]);
-		game->map.map[j][line_len - 1] = '\0';
+		if (game->map.map[j][line_len - 1] == '\n')
+			game->map.map[j][line_len - 1] = '\0';
 		i++;
 		j++;
 	}
