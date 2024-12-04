@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:08:06 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/03 11:02:12 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/04 15:21:23 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,10 @@ int	draw_loop(t_game *game)
 		start_x += fraction;
 		game->vars.index++;
 	}
-	draw_map(game);
 	mlx_put_image_to_window(game->window.mlx, \
 		game->window.window, game->window.image, 10, 10);
+	draw_map(game);
+	draw_compass(game);
 	return (0);
 }
 

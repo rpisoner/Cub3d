@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:55:04 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/03 13:02:44 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/04 12:06:06 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,8 @@ bool	touch(t_game *game)
 	}
 	else if (game->map.map[y][x] == 'D')
 	{
-		game->door[0].open = true;
-		check_door_touch(x, y, game);
-		return (true);
+		if (check_door_touch(x, y, game))
+			return (true);
 	}
 	return (false);
 }
@@ -93,7 +92,6 @@ void	draw_line(t_game *game, float start_x)
 	float	cos_angle;
 	float	sin_angle;
 	float	dist;
-
 	cos_angle = cos(start_x);
 	sin_angle = sin(start_x);
 	game->vars.ray_x = game->player.x;

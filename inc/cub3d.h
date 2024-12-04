@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:19:57 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/03 12:56:29 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/04 15:03:51 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,14 @@
 # define WEST_WALL "textures/west.xpm"
 # define EAST_WALL "textures/east.xpm"
 # define DOOR "textures/door.xpm"
+# define COMPASS_NORTH "textures/compass/compass_north.xpm"
+# define COMPASS_SOUTH "textures/compass/compass_south.xpm"
+# define COMPASS_WEST "textures/compass/compass_west.xpm"
+# define COMPASS_EAST "textures/compass/compass_east.xpm"
+# define COMPASS_NORTH_WEST "textures/compass/compass_northwest.xpm"
+# define COMPASS_NORTH_EAST "textures/compass/compass_northeast.xpm"
+# define COMPASS_SOUTH_WEST "textures/compass/compass_southwest.xpm"
+# define COMPASS_SOUTH_EAST "textures/compass/compass_southeast.xpm"
 # define COLOR_SKY 0x87CEEB
 # define COLOR_FLOOR 0x8B4513
 # define COLOR_NORTH 0xFF0000
@@ -115,6 +123,14 @@ typedef struct s_game
 	void		*east_texture;
 	void		*west_texture;
 	void		*door_texture;
+	void		*north_compass;
+	void		*south_compass;
+	void		*west_compass;
+	void		*east_compass;
+	void 		*north_west_compass;
+	void		*north_east_compass;
+	void		*south_west_compass;
+	void		*south_east_compass;
 	int			floor_color;
 	int			ceiling_color;
 	int			mini_x;
@@ -153,6 +169,7 @@ int		key_release(int keycode, t_player *player);
 void	move_player(t_game *game);
 
 void	init_textures(t_game *game);
+void	init_compass_textures(t_game *game);
 
 void	put_pixel(int x, int y, int color, t_game *game);
 int		draw_loop(t_game *game);
@@ -163,10 +180,15 @@ void	init_south_texture(t_game *game, int size);
 void	init_east_texture(t_game *game, int size);
 void	init_west_texture(t_game *game, int size);
 void	init_door_texture(t_game *game, int size);
+void	init_north_compass(t_game *game, int width, int height);
+void	init_south_compass(t_game *game, int width, int height);
+void	init_west_compass(t_game *game, int width, int height);
+void	init_east_compass(t_game *game, int width, int height);
 void	init_door(t_game *game);
 void	render(t_game *game, float dist);
 void	draw_square(int x, int y, int size, int color, t_game *game);
 void	draw_map(t_game *game);
+void	draw_compass(t_game *game);
 void	draw_line(t_game *game, float start_x);
 void	paint_sky_color(t_game *game);
 void	paint_floor_color(t_game *game);
@@ -180,7 +202,7 @@ int		is_wall_down(t_game *game, int speed, float cos_angle, float sin_angle);
 int		is_wall_left(t_game *game, int speed, float cos_angle, float sin_angle);
 int		is_wall_right(t_game *game, int speed, float cos_angle, float sin_angle);
 int		is_door(t_game *game, int speed, float cos_angle, float sin_angle);
-void	check_door_touch(int ray_x, int ray_y, t_game *game);
+int		check_door_touch(int ray_x, int ray_y, t_game *game);
 
 void	check_angle(t_game *game);
 void	print_errors(int code);

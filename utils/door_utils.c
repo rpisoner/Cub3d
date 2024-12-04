@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 12:05:50 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/03 13:02:28 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/04 11:58:31 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	check_door_touch(int ray_x, int ray_y, t_game *game)
 				return (1);
 			}
 	}
+	return (0);
 }
 
 void	init_door(t_game *game)
@@ -57,7 +58,12 @@ void	init_door(t_game *game)
 
 	door_index = 0;
 	if (door_count(game) != 0)
-		game->door = malloc(sizeof(char *) * door_count(game));
+		game->door = malloc(sizeof(t_door) * game->door_count);
+	if (game->door == NULL)
+	{
+		printf("Malloc error\n");
+		exit (1);
+	}
 	i = -1;
 	while (game->map.map[++i])
 	{
@@ -69,6 +75,7 @@ void	init_door(t_game *game)
 				game->door[door_index].x = j;
 				game->door[door_index].y = i;
 				game->door[door_index].open = false;
+				door_index++;
 			}
 		}
 	}

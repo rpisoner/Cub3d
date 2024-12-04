@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:06:10 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/03 10:58:22 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/04 14:47:42 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,17 @@ void	init_textures(t_game *game)
 	init_east_texture(game, size);
 	init_west_texture(game, size);
 	init_door_texture(game, size);
+}
+
+void	init_compass_textures(t_game *game)
+{
+	int	width;
+	int	height;
+
+	width = 128;
+	height = 64;
+	init_north_compass(game, width, height);
+	init_south_compass(game, width, height);
+	init_west_compass(game, width, height);
+	init_east_compass(game, width, height);
 }
