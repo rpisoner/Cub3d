@@ -6,7 +6,7 @@
 /*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 14:52:33 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/04 17:44:07 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/04 17:50:19 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,5 @@ void	draw_compass(t_game *game)
 		active_img = game->north_compass;
 	else
 		active_img = game->north_east_compass;
-	mlx_put_image_to_window(game->window.mlx, game->window.window, active_img, 675, 500);
+	mlx_put_image_to_window(game->window.mlx, game->window.window, active_img, (WIDTH / 2.25), (HEIGHT / 1.5));
 }

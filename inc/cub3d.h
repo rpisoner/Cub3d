@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:19:57 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/04 15:03:51 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/04 17:51:14 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@
 # define MINIMAP_BG_HEIGHT 200
 # define MINIMAP_SCALE 0.3
 # define MINIMAP_BLOCK_SIZE 20
-# define WIDTH 1500
-# define HEIGHT 720
+# define WIDTH 1920
+# define HEIGHT 1080
 # define BLOCK_SIZE 64
 # define TEXTURE_WIDTH 64
 # define W 119
