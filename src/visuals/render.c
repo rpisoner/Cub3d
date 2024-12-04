@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 16:48:52 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/03 11:59:00 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/04 17:43:29 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ static void	render_raycast(t_game *game, int start_y, int end)
 			color = get_texture_color(game->south_texture, \
 				game, TEXTURE_WIDTH, TEXTURE_WIDTH);
 		else if (game->orientation == 3)
-			color = get_texture_color(game->east_texture, \
+			color = get_texture_color(game->west_texture, \
 				game, TEXTURE_WIDTH, TEXTURE_WIDTH);
 		else if (game->orientation == 4)
-			color = get_texture_color(game->west_texture, \
+			color = get_texture_color(game->east_texture, \
 				game, TEXTURE_WIDTH, TEXTURE_WIDTH);
 		else if (game->orientation == 5)
 			color = get_texture_color(game->door_texture, \

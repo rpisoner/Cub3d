@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   compass.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 14:52:33 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/04 15:19:46 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/04 17:44:07 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,20 @@ void	draw_compass(t_game *game)
 	if (angle < 0)
 		angle += 360;
 	if (angle >= 337.5 || angle < 22.5)
-		active_img = game->north_compass;
-	else if (angle >= 22.5 && angle < 67.5)
-		active_img = game->north_east_compass;
-	else if (angle >= 67.5 && angle < 112.5)
 		active_img = game->east_compass;
-	else if (angle >= 112.5 && angle < 157.5)
+	else if (angle >= 22.5 && angle < 67.5)
 		active_img = game->south_east_compass;
-	else if (angle >= 157.5 && angle < 202.5)
+	else if (angle >= 67.5 && angle < 112.5)
 		active_img = game->south_compass;
-	else if (angle >= 202.5 && angle < 247.5)
+	else if (angle >= 112.5 && angle < 157.5)
 		active_img = game->south_west_compass;
-	else if (angle >= 247.5 && angle < 292.5)
+	else if (angle >= 157.5 && angle < 202.5)
 		active_img = game->west_compass;
-	else
+	else if (angle >= 202.5 && angle < 247.5)
 		active_img = game->north_west_compass;
-	printf("=> [%p]\n", active_img);
-	mlx_put_image_to_window(game->window.mlx, game->window.window, active_img, WIDTH / 2, HEIGHT);
+	else if (angle >= 247.5 && angle < 292.5)
+		active_img = game->north_compass;
+	else
+		active_img = game->north_east_compass;
+	mlx_put_image_to_window(game->window.mlx, game->window.window, active_img, 675, 500);
 }

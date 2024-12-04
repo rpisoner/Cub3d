@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:55:04 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/04 12:06:06 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/04 17:22:20 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	draw_player_on_minimap(t_game *game)
 	int	player_x;
 	int	player_y;
 
-	player_x = game->player.x * MINIMAP_SCALE;
+	player_x = game->player.x * MINIMAP_SCALE + 10;
 	player_y = game->player.y * MINIMAP_SCALE;
 	draw_square(player_x, player_y, 7, 0x00FF00, game);
 }
@@ -39,13 +39,13 @@ void	draw_minimap_background(t_game *game)
 void	draw_map(t_game *game)
 {
 	int	color;
-	int	door_color;
+	// int	door_color;
 	int	y;
 	int	x;
 
 	draw_minimap_background(game);
 	color = 0xFF0000;
-	door_color = 0x800080;
+	// door_color = 0x800080;
 	y = -1;
 	while (game->map.map[++y])
 	{

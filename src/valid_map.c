@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:50:15 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/12/03 11:01:05 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/04 17:42:07 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ int	is_map_valid(char **map, int rows)
 						k++;
 					}
 					free(visited);
-					printf("AQUÍ\n");
 					return (0);
 				}
 			}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:08:06 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/04 15:21:23 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/04 17:31:38 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,9 @@ int	draw_loop(t_game *game)
 		start_x += fraction;
 		game->vars.index++;
 	}
+	// draw_map(game);
 	mlx_put_image_to_window(game->window.mlx, \
-		game->window.window, game->window.image, 10, 10);
-	draw_map(game);
+		game->window.window, game->window.image, 0, 0);
 	draw_compass(game);
 	return (0);
 }
