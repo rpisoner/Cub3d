@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:29:49 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/09 14:48:07 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:06:26 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ int	main(int argc, char **argv)
 
 	init_game(&game);
 	init_window(&game);
+	parse(&game, argc, argv);
 	init_textures(&game);
 	init_compass_textures(&game);
-	parse(&game, argc, argv);
 	init_door(&game);
 	mlx_mouse_hide(game.window.mlx, game.window.window);
 	mlx_mouse_move(game.window.mlx, game.window.window, WIDTH / 2, HEIGHT / 2);
