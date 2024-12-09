@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 12:04:32 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/12/04 11:28:54 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:12:50 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	init_game(t_game *game)
 	game->south_texture = NULL;
 	game->east_texture = NULL;
 	game->west_texture = NULL;
+	game->door = NULL;
 	game->floor_color = 0;
 	game->ceiling_color = 0;
 	game->map.textures_ready = false;

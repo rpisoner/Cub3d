@@ -6,7 +6,7 @@
 /*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 13:30:24 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/11/29 12:49:45 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:24:16 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void	copy_file(t_game *game, char *file)
 	fd = open(file, O_RDONLY);
 	while (++i < game->map.y_size)
 		game->map.raw_file[i] = get_next_line(fd);
+	game->map.raw_file[i] = NULL;
 	close(fd);
 }
 

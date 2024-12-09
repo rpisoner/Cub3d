@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:29:49 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/09 16:06:26 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:23:34 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	main(int argc, char **argv)
 	parse(&game, argc, argv);
 	init_textures(&game);
 	init_compass_textures(&game);
-	init_door(&game);
+	//init_door(&game);
 	mlx_mouse_hide(game.window.mlx, game.window.window);
 	mlx_mouse_move(game.window.mlx, game.window.window, WIDTH / 2, HEIGHT / 2);
 	mlx_hook(game.window.window, 6, 1L << 6, mouse_detect, &game);

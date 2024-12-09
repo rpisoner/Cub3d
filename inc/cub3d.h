@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:19:57 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/09 14:46:05 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:11:15 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,12 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 33
 # endif
+
+typedef struct s_coords
+{
+	int	x;
+	int	y;
+}	t_coords;
 
 typedef struct s_window
 {
@@ -159,6 +165,7 @@ bool	textures_ready(t_game *game);
 void	parse_config(t_game *game);
 void	parse(t_game *game, int argc, char **argv);
 int		is_map_valid(char **map, int rows);
+int		is_out_of_bounds(int x, int y, int rows, char **map);
 
 //Initializers
 void	init_game(t_game *game);
@@ -213,7 +220,9 @@ void	print_errors(int code);
 //DEV UTILS
 void	print_map(t_game *game);
 
+//FREE STUFF
 void	free_str(char **str);
 void	free_door(t_game *game);
+void	free_matrix(int **matrix);
 
 #endif
