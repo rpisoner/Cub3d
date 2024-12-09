@@ -6,31 +6,30 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 12:56:33 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/06 11:40:31 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/09 14:45:51 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-int	key_press(int keycode, t_player *player, t_game *game)
+int	key_press(int keycode, t_game *game)
 {
-	(void)game;
 	if (keycode == W)
-		player->key_up = true;
+		game->player.key_up = true;
 	if (keycode == S)
-		player->key_down = true;
+		game->player.key_down = true;
 	if (keycode == A)
-		player->key_left = true;
+		game->player.key_left = true;
 	if (keycode == D)
-		player->key_right = true;
+		game->player.key_right = true;
 	if (keycode == E)
-		player->key_door = true;
+		game->player.key_door = true;
 	if (keycode == LEFT)
-		player->left_rotation = true;
+		game->player.left_rotation = true;
 	if (keycode == RIGHT)
-		player->right_rotation = true;
+		game->player.right_rotation = true;
 	if (keycode == ESC)
-		exit_game();
+		exit_game(game);
 	return (0);
 }
 

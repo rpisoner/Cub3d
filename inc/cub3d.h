@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:19:57 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/04 17:51:14 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/09 14:46:05 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <math.h>
 # include <stdbool.h>
 # include <unistd.h>
+# include <limits.h>
 # define NORTH_WALL "textures/north.xpm"
 # define SOUTH_WALL "textures/south.xpm"
 # define WEST_WALL "textures/west.xpm"
@@ -45,8 +46,8 @@
 # define MINIMAP_BG_HEIGHT 200
 # define MINIMAP_SCALE 0.3
 # define MINIMAP_BLOCK_SIZE 20
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 1680
+# define HEIGHT 720
 # define BLOCK_SIZE 64
 # define TEXTURE_WIDTH 64
 # define W 119
@@ -77,6 +78,7 @@ typedef struct s_vars
 	int		projected_height;
 	int		center_y;
 	int		index;
+	int 	color;
 }	t_vars;
 
 typedef struct s_player
@@ -162,9 +164,9 @@ int		is_map_valid(char **map, int rows);
 void	init_game(t_game *game);
 void	init_window(t_game *game);
 
-int		exit_game(void);
+int		exit_game(t_game *game);
 
-int		key_press(int keycode, t_player *player, t_game *game);
+int		key_press(int keycode, t_game *game);
 int		key_release(int keycode, t_player *player);
 void	move_player(t_game *game);
 
@@ -187,7 +189,7 @@ void	init_east_compass(t_game *game, int width, int height);
 void	init_door(t_game *game);
 void	render(t_game *game, float dist);
 void	draw_square(int x, int y, int size, int color, t_game *game);
-void	draw_map(t_game *game);
+void	draw_minimap(t_game *game);
 void	draw_compass(t_game *game);
 void	draw_line(t_game *game, float start_x);
 void	paint_sky_color(t_game *game);
@@ -205,11 +207,13 @@ int		is_door(t_game *game, int speed, float cos_angle, float sin_angle);
 int		check_door_touch(int ray_x, int ray_y, t_game *game);
 
 void	check_angle(t_game *game);
+int 	check_ray_distance(t_game *game);
 void	print_errors(int code);
 
 //DEV UTILS
 void	print_map(t_game *game);
 
 void	free_str(char **str);
+void	free_door(t_game *game);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/25 12:23:04 by jolivare          #+#    #+#              #
-#    Updated: 2024/12/04 15:04:06 by jolivare         ###   ########.fr        #
+#    Updated: 2024/12/09 14:48:51 by jolivare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,4 +93,7 @@ r: all clean
 	@clear
 	@./$(NAME) maps/map.cub
 
+v: all clean
+	@clear
+	@valgrind --leak-check=full ./$(NAME) maps/map.cub
 .PHONY: all clean fclean re c

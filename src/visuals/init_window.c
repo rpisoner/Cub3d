@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   init_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:08:06 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/04 17:31:38 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/09 12:12:00 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../inc/cub3d.h"
 
@@ -75,7 +74,7 @@ int	draw_loop(t_game *game)
 		start_x += fraction;
 		game->vars.index++;
 	}
-	// draw_map(game);
+	draw_minimap(game);
 	mlx_put_image_to_window(game->window.mlx, \
 		game->window.window, game->window.image, 0, 0);
 	draw_compass(game);

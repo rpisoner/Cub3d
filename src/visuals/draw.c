@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:55:04 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/04 17:22:20 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/09 14:36:48 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,14 @@ void	draw_minimap_background(t_game *game)
 	}
 }
 
-void	draw_map(t_game *game)
+void	draw_minimap(t_game *game)
 {
 	int	color;
-	// int	door_color;
 	int	y;
 	int	x;
 
 	draw_minimap_background(game);
 	color = 0xFF0000;
-	// door_color = 0x800080;
 	y = -1;
 	while (game->map.map[++y])
 	{
@@ -92,6 +90,9 @@ void	draw_line(t_game *game, float start_x)
 	float	cos_angle;
 	float	sin_angle;
 	float	dist;
+	int		flag;
+	
+	flag = 0;
 	cos_angle = cos(start_x);
 	sin_angle = sin(start_x);
 	game->vars.ray_x = game->player.x;
@@ -100,7 +101,13 @@ void	draw_line(t_game *game, float start_x)
 	{
 		game->vars.ray_x += cos_angle;
 		game->vars.ray_y += sin_angle;
+		if (check_ray_distance(game))
+		{
+			flag = 1;
+			break ;
+		}
 	}
 	dist = fixed_distance(game->player.x, game->player.y, game);
-	render(game, dist);
+	if (!flag)
+		render(game, dist);
 }

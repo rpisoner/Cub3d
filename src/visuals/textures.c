@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:06:10 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/04 14:47:42 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/09 13:06:17 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	init_compass_textures(t_game *game)
 	int	width;
 	int	height;
 
-	width = 128;
-	height = 64;
+	width = 256;
+	height = 128;
 	init_north_compass(game, width, height);
 	init_south_compass(game, width, height);
 	init_west_compass(game, width, height);
