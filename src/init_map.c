@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:56:47 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/09 14:27:41 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:59:04 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	check_char(t_game *game, int i, int j, int *player_symbols)
 			game->player.angle = M_PI;
 		*player_symbols += 1;
 	}
-	// init_door(game);
+	init_door(game);
 }
 
 static void	check_valid_map(t_game *game)

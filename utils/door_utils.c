@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 12:05:50 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/09 12:25:02 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:35:29 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,48 @@ void	init_door(t_game *game)
 				door_index++;
 			}
 		}
+	}
+}
+
+int	check_door_collision(t_game *game, int x, int y)
+{
+	int	i;
+
+	i = -1;
+	while (++i < game->door_count)
+	{
+		if (x == game->door[i].x && y == game->door[i].y
+			&& !game->door[i].open)
+			return (1);
+	}
+	return (0);
+}
+
+void	open_door(t_game *game, float cos_angle, float sin_angle, int speed)
+{
+	int		i;
+	float	new_x;
+	float	new_y;
+	int		x;
+	int		y;
+	
+	new_x = game->player.x + sin_angle * speed;
+	new_y = game->player.y + cos_angle * speed;
+	x = (int)new_x / BLOCK_SIZE;
+	y = (int)new_y / BLOCK_SIZE;
+	i = -1;
+	while (++i < game->door_count)
+	{
+		printf("game_door x: %d\n", game->door[i].x);
+		printf("map x: %d\n", x);
+		if (x == game->door[i].x && y == game->door[i].y
+			&& !game->door[i].open)
+		{
+			printf("Entra en el if\n");
+			game->door[i].open = true;
+		}
+		else if (x == game->door[i].x && y == game->door[i].y
+			&& game->door[i].open)
+			game->door[i].open = false;
 	}
 }

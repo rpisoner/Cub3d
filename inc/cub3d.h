@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:19:57 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/09 16:11:15 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:29:15 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,6 @@
 # include <stdbool.h>
 # include <unistd.h>
 # include <limits.h>
-# define NORTH_WALL "textures/north.xpm"
-# define SOUTH_WALL "textures/south.xpm"
-# define WEST_WALL "textures/west.xpm"
-# define EAST_WALL "textures/east.xpm"
 # define DOOR "textures/door.xpm"
 # define COMPASS_NORTH "textures/compass/compass_north.xpm"
 # define COMPASS_SOUTH "textures/compass/compass_south.xpm"
@@ -177,17 +173,12 @@ int		key_press(int keycode, t_game *game);
 int		key_release(int keycode, t_player *player);
 void	move_player(t_game *game);
 
-void	init_textures(t_game *game);
 void	init_compass_textures(t_game *game);
 
 void	put_pixel(int x, int y, int color, t_game *game);
 int		draw_loop(t_game *game);
 void	draw_minimap_background(t_game *game);
 int		get_texture_color(void *texture, t_game *game, int width, int height);
-void	init_north_texture(t_game *game, int size);
-void	init_south_texture(t_game *game, int size);
-void	init_east_texture(t_game *game, int size);
-void	init_west_texture(t_game *game, int size);
 void	init_door_texture(t_game *game, int size);
 void	init_north_compass(t_game *game, int width, int height);
 void	init_south_compass(t_game *game, int width, int height);
@@ -210,8 +201,13 @@ int		is_wall_up(t_game *game, int speed, float cos_angle, float sin_angle);
 int		is_wall_down(t_game *game, int speed, float cos_angle, float sin_angle);
 int		is_wall_left(t_game *game, int speed, float cos_angle, float sin_angle);
 int		is_wall_right(t_game *game, int speed, float cos_angle, float sin_angle);
-int		is_door(t_game *game, int speed, float cos_angle, float sin_angle);
+int		is_door_up(t_game *game, int speed, float cos_angle, float sin_angle);
+int		is_door_down(t_game *game, int speed, float cos_angle, float sin_angle);
+int		is_door_left(t_game *game, int speed, float cos_angle, float sin_angle);
+int		is_door_right(t_game *game, int speed, float cos_angle, float sin_angle);
+void	open_door(t_game *game, float cos_angle, float sin_angle, int speed);
 int		check_door_touch(int ray_x, int ray_y, t_game *game);
+int		check_door_collision(t_game *game, int x, int y);
 
 void	check_angle(t_game *game);
 int 	check_ray_distance(t_game *game);

@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:06:10 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/09 16:06:17 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:56:24 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,6 @@ int	get_texture_color(void *texture, t_game *game, int width, int height)
 		return (0x000000);
 	index = (game->texture_y * size_line) + (game->texture_x * (bpp / 8));
 	return (*(int *)(data + index));
-}
-
-void	init_textures(t_game *game)
-{
-	int	size;
-
-	size = 64;
-	init_door_texture(game, size);
 }
 
 void	init_compass_textures(t_game *game)
