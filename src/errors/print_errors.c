@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_errors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42mad.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:47:44 by jolivare          #+#    #+#             */
-/*   Updated: 2024/11/26 12:55:19 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:58:06 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,18 @@ void	print_errors(int code)
 		printf("Error\nNúmero de argumentos inválido\n");
 	print_errors2(code);
 	exit (1);
+}
+
+void	check_color_format(char **str)
+{
+	int	i;
+
+	i = -1;
+	while (str[i])
+		i++;
+	if (i != 3)
+	{
+		printf("color format error\n");
+		exit (1);
+	}
 }

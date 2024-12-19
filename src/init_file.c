@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42mad.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 13:30:24 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/12/09 16:24:16 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:57:35 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,5 @@ void	init_file(t_game *game, char *file)
 	game->map.raw_file = (char **)malloc(sizeof(char *) * (height + 1));
 	copy_file(game, file);
 	parse_config(game);
+	assign_floor_color(game);
 }

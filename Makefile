@@ -6,7 +6,7 @@
 #    By: jolivare <jolivare@student.42mad.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/25 12:23:04 by jolivare          #+#    #+#              #
-#    Updated: 2024/12/19 11:56:38 by jolivare         ###   ########.fr        #
+#    Updated: 2024/12/19 16:57:52 by jolivare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SRC = src/init_map.c inc/get_next_line/get_next_line.c src/errors/print_errors.c
 		src/gameplay/movement.c src/gameplay/keyhook.c src/visuals/textures.c \
 		src/init_file.c src/init_game.c src/parser/parse_config2.c src/parser/parse.c utils/dev_utils.c \
 		utils/assign_textures.c utils/distance.c src/visuals/render.c utils/check_angle.c utils/door_utils.c \
-		utils/assign_compass_textures.c src/visuals/compass.c utils/valid_map_utils.c utils/door_collisions.c 
+		utils/assign_compass_textures.c src/visuals/compass.c utils/valid_map_utils.c utils/door_collisions.c \
+		src/parser/parse_colors.c 
 
 OBJ = $(SRC:.c=.o)
 LIBFT = inc/libft/libft.a

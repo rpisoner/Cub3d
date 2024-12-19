@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42mad.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:50:15 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/12/09 16:35:05 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/12/19 12:04:17 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	flood_fill(char **map, t_coords coords, int rows, int **visited)
 	if (map[coords.x][coords.y] == '1' || visited[coords.x][coords.y])
 		return (1);
 	visited[coords.x][coords.y] = 1;
-
 	return (flood_fill(map, (t_coords){coords.x - 1, coords.y}, rows, visited)
 		&& flood_fill(map, (t_coords){coords.x + 1, coords.y}, rows, visited)
 		&& flood_fill(map, (t_coords){coords.x, coords.y - 1}, rows, visited)

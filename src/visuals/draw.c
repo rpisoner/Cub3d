@@ -6,7 +6,7 @@
 /*   By: jolivare <jolivare@student.42mad.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:55:04 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/19 11:49:38 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/19 12:04:01 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	draw_line(t_game *game, float start_x)
 	float	sin_angle;
 	float	dist;
 	int		flag;
-	
+
 	flag = 0;
 	cos_angle = cos(start_x);
 	sin_angle = sin(start_x);

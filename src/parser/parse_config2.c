@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_config2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42mad.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 12:27:36 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/11/24 17:52:25 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:45:02 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	load_floor_color(t_game *game, int i)
 	char	**aux;
 
 	aux = ft_split(game->map.raw_file[i], ' ');
-	game->floor_color = ft_atoi(aux[1]);
+	game->floor_color = ft_strdup(aux[1]);
 	free_str(aux);
 }
 
@@ -26,7 +26,7 @@ void	load_ceiling_color(t_game *game, int i)
 	char	**aux;
 
 	aux = ft_split(game->map.raw_file[i], ' ');
-	game->ceiling_color = ft_atoi(aux[1]);
+	game->ceiling_color = ft_strdup(aux[1]);
 	free_str(aux);
 }
 
