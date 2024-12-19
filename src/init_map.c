@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:56:47 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/09 16:59:04 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/12 16:11:18 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static void	check_char(t_game *game, int i, int j, int *player_symbols)
 			game->player.angle = M_PI;
 		*player_symbols += 1;
 	}
-	init_door(game);
 }
 
 static void	check_valid_map(t_game *game)
@@ -47,14 +46,12 @@ static void	check_valid_map(t_game *game)
 	player_symbols = 0;
 	while (game->map.map[i])
 	{
-		j = 0;
-		while (game->map.map[i][j] != '\0')
-		{
+		j = -1;
+		while (game->map.map[i][++j] != '\0')
 			check_char(game, i, j, &player_symbols);
-			j++;
-		}
 		i++;
 	}
+	init_door(game);
 	if (player_symbols != 1)
 		print_errors(7);
 	if (!is_map_valid(game->map.map, game->map.y_size))

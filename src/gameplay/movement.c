@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42mad.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 12:52:56 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/09 18:31:34 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/19 11:46:22 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,29 +44,28 @@ static void	move_player_right(t_game *game, float cos_angle, \
 
 void	move_player(t_game *game)
 {
-	int		speed;
 	float	cos_angle;
 	float	sin_angle;
 
-	speed = 2;
 	cos_angle = cos(game->player.angle);
 	sin_angle = sin(game->player.angle);
 	check_angle(game);
 	if (game->player.key_door)
-	{
-		printf("Entra\n");	
-		open_door(game, cos_angle, sin_angle, speed);
-	}
-	if (game->player.key_up && !is_wall_up(game, speed, \
-		cos_angle, sin_angle) && !is_door_up(game, speed, cos_angle, sin_angle))
-		move_player_forward(game, cos_angle, sin_angle, speed);
-	if (game->player.key_down && !is_wall_down(game, speed, \
-		cos_angle, sin_angle) && !is_door_down(game, speed, cos_angle, sin_angle))
-		move_player_backwards(game, cos_angle, sin_angle, speed);
-	if (game->player.key_left && !is_wall_left(game, speed, \
-		cos_angle, sin_angle) && !is_door_left(game, speed, cos_angle, sin_angle))
-		move_player_left(game, cos_angle, sin_angle, speed);
-	if (game->player.key_right && !is_wall_right(game, speed, \
-		cos_angle, sin_angle) && !is_door_right(game, speed, cos_angle, sin_angle))
-		move_player_right(game, cos_angle, sin_angle, speed);
+		open_door(game);
+	if (game->player.key_up && !is_wall_up(game, game->speed, \
+		cos_angle, sin_angle) && \
+		!is_door_up(game, game->speed, cos_angle, sin_angle))
+		move_player_forward(game, cos_angle, sin_angle, game->speed);
+	if (game->player.key_down && !is_wall_down(game, game->speed, \
+		cos_angle, sin_angle) && \
+		!is_door_down(game, game->speed, cos_angle, sin_angle))
+		move_player_backwards(game, cos_angle, sin_angle, game->speed);
+	if (game->player.key_left && !is_wall_left(game, game->speed, \
+		cos_angle, sin_angle) && \
+		!is_door_left(game, game->speed, cos_angle, sin_angle))
+		move_player_left(game, cos_angle, sin_angle, game->speed);
+	if (game->player.key_right && !is_wall_right(game, game->speed, \
+		cos_angle, sin_angle) && \
+		!is_door_right(game, game->speed, cos_angle, sin_angle))
+		move_player_right(game, cos_angle, sin_angle, game->speed);
 }

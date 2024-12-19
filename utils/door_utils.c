@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   door_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42mad.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 12:05:50 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/09 18:35:29 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/19 11:42:48 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ void	init_door(t_game *game)
 	i = -1;
 	while (game->map.map[++i])
 	{
-		j = -1;
-		while (game->map.map[i][++j])
+		j = 0;
+		while (game->map.map[i][j])
 		{
 			if (game->map.map[i][j] == 'D')
 			{
@@ -74,6 +74,7 @@ void	init_door(t_game *game)
 				game->door[door_index].open = false;
 				door_index++;
 			}
+			j++;
 		}
 	}
 }
@@ -92,31 +93,56 @@ int	check_door_collision(t_game *game, int x, int y)
 	return (0);
 }
 
-void	open_door(t_game *game, float cos_angle, float sin_angle, int speed)
-{
-	int		i;
-	float	new_x;
-	float	new_y;
-	int		x;
-	int		y;
+// void	open_door(t_game *game)
+// {
+// 	int		i;
+// 	int		x;
+// 	int		y;
 	
-	new_x = game->player.x + sin_angle * speed;
-	new_y = game->player.y + cos_angle * speed;
-	x = (int)new_x / BLOCK_SIZE;
-	y = (int)new_y / BLOCK_SIZE;
+// 	x = (int)game->player.x / BLOCK_SIZE;
+// 	y = (int)game->player.y / BLOCK_SIZE;
+// 	i = -1;
+// 	while (++i < game->door_count)
+// 	{
+// 		if ((x == game->door[i].x && y == game->door[i].y - 1
+// 			&& !game->door[i].open) || (x == game->door[i].x 
+// 			&& y == game->door[i].y + 1
+// 			&& !game->door[i].open))
+// 			game->door[i].open = true;
+// 		else if ((x == game->door[i].x && y == game->door[i].y - 1
+// 			&& game->door[i].open) || (x == game->door[i].x
+// 			&& y == game->door[i].y + 1
+// 			&& game->door[i].open))
+// 			game->door[i].open = false;
+// 		else if ((x + 1 == game->door[i].x && y == game->door[i].y
+// 			&& !game->door[i].open) 
+// 			|| (x - 1 == game->door[i].x && y - 1 == game->door[i].y
+// 			&& !game->door[i].open))
+// 				game->door[i].open = true;
+// 		else if ((x + 1 == game->door[i].x && y == game->door[i].y
+// 			&& game->door[i].open) 
+// 			|| (x - 1 == game->door[i].x && y - 1 == game->door[i].y
+// 			&& game->door[i].open))
+// 				game->door[i].open = false;
+// 	}
+// }
+
+void	open_door(t_game *game)
+{
+	int	i;
+	int	player_x;
+	int	player_y;
+
+	player_x = (int)game->player.x / BLOCK_SIZE;
+	player_y = (int)game->player.y / BLOCK_SIZE;
 	i = -1;
 	while (++i < game->door_count)
 	{
-		printf("game_door x: %d\n", game->door[i].x);
-		printf("map x: %d\n", x);
-		if (x == game->door[i].x && y == game->door[i].y
-			&& !game->door[i].open)
+		if (((player_x == game->door[i].x && abs(player_y - game->door[i].y) == 1) ||
+			(player_y == game->door[i].y && abs(player_x - game->door[i].x) == 1)))
 		{
-			printf("Entra en el if\n");
-			game->door[i].open = true;
+			game->door[i].open = !game->door[i].open;
+			break;
 		}
-		else if (x == game->door[i].x && y == game->door[i].y
-			&& game->door[i].open)
-			game->door[i].open = false;
 	}
 }

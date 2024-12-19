@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42mad.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 12:04:32 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/12/09 16:12:50 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/12/19 11:51:10 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ void	init_game(t_game *game)
 	game->floor_color = 0;
 	game->ceiling_color = 0;
 	game->map.textures_ready = false;
+	game->speed = 4;
 	init_player(game);
 }

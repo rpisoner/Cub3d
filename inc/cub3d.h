@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42mad.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:19:57 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/09 18:29:15 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/19 11:49:48 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,6 @@
 # define COMPASS_SOUTH_EAST "textures/compass/compass_southeast.xpm"
 # define COLOR_SKY 0x87CEEB
 # define COLOR_FLOOR 0x8B4513
-# define COLOR_NORTH 0xFF0000
-# define COLOR_SOUTH 0x00FF00
-# define COLOR_EAST  0x0000FF
-# define COLOR_WEST  0xFFFF00
 # define COLOR_DOOR  0x800080
 # define MINIMAP_BG_COLOR 0x808080
 # define MINIMAP_BG_WIDTH 300
@@ -147,6 +143,7 @@ typedef struct s_game
 	int			endian;
 	int			texture_x;
 	int			texture_y;
+	int			speed;
 }	t_game;
 
 char	*get_next_line(int fd);
@@ -205,7 +202,8 @@ int		is_door_up(t_game *game, int speed, float cos_angle, float sin_angle);
 int		is_door_down(t_game *game, int speed, float cos_angle, float sin_angle);
 int		is_door_left(t_game *game, int speed, float cos_angle, float sin_angle);
 int		is_door_right(t_game *game, int speed, float cos_angle, float sin_angle);
-void	open_door(t_game *game, float cos_angle, float sin_angle, int speed);
+void	open_door(t_game *game);
+void	change_door_state(t_game *game, int x, int y, int index);
 int		check_door_touch(int ray_x, int ray_y, t_game *game);
 int		check_door_collision(t_game *game, int x, int y);
 

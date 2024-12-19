@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:41:47 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/09 17:50:06 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/11 11:48:41 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	is_door_right(t_game *game, int speed, float cos_angle, float sin_angle)
 	map_y = (int)new_y / BLOCK_SIZE;
 	if (game->map.map[map_y][map_x] == 'D')
 	{
-		if (check_door_collision(game, map_x, map_y))
+		if (check_door_collision(game, map_x + 1, map_y + 1))
 			return (1);
 	}
 	return (0);
