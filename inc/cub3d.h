@@ -6,7 +6,7 @@
 /*   By: jolivare <jolivare@student.42mad.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:19:57 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/19 11:49:48 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/19 11:56:57 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,7 +203,6 @@ int		is_door_down(t_game *game, int speed, float cos_angle, float sin_angle);
 int		is_door_left(t_game *game, int speed, float cos_angle, float sin_angle);
 int		is_door_right(t_game *game, int speed, float cos_angle, float sin_angle);
 void	open_door(t_game *game);
-void	change_door_state(t_game *game, int x, int y, int index);
 int		check_door_touch(int ray_x, int ray_y, t_game *game);
 int		check_door_collision(t_game *game, int x, int y);
 
