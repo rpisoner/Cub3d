@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_floor_ceiling.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42mad.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:03:12 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/09 12:19:14 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/20 14:32:56 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ void	paint_floor_color(t_game *game)
 	{
 		j = -1;
 		while (++j < WIDTH)
-			put_pixel(j, i, COLOR_FLOOR, game);
+			put_pixel(j, i, game->floor_color, game);
 	}
 }

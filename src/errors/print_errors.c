@@ -6,7 +6,7 @@
 /*   By: jolivare <jolivare@student.42mad.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:47:44 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/19 16:58:06 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/20 14:22:34 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,25 @@ void	print_errors(int code)
 void	check_color_format(char **str)
 {
 	int	i;
+	int	j;
 
 	i = -1;
-	while (str[i])
-		i++;
+	while (str[++i])
+	{
+		j = -1;
+		while (str[i][++j])
+		{
+			if (str[i][j] && str[i][j] != '\n' && !ft_isdigit(str[i][j]))
+			{
+				printf("AlphaNumeric char detected\n");
+				exit (1);
+			}
+		}
+	}
 	if (i != 3)
 	{
-		printf("color format error\n");
+		printf("Color format error\n");
 		exit (1);
 	}
+	
 }

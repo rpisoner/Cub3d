@@ -6,7 +6,7 @@
 /*   By: jolivare <jolivare@student.42mad.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:19:57 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/19 16:56:36 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/20 14:47:35 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,8 +131,8 @@ typedef struct s_game
 	void		*north_east_compass;
 	void		*south_west_compass;
 	void		*south_east_compass;
-	char		*floor_color;
-	char		*ceiling_color;
+	char		*floor_str;
+	char		*ceiling_str;
 	int			mini_x;
 	int			mini_y;
 	int			size_line;
@@ -144,6 +144,8 @@ typedef struct s_game
 	int			texture_x;
 	int			texture_y;
 	int			speed;
+	int			floor_color;
+	int			ceiling_color;
 }	t_game;
 
 char	*get_next_line(int fd);
@@ -186,6 +188,7 @@ void	render(t_game *game, float dist);
 void	draw_square(int x, int y, int size, int color, t_game *game);
 void	draw_minimap(t_game *game);
 void 	assign_floor_color(t_game *game);
+void	assign_ceiling_color(t_game *game);
 void	draw_compass(t_game *game);
 void	draw_line(t_game *game, float start_x);
 void	paint_sky_color(t_game *game);
