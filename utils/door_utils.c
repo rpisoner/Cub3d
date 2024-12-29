@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   door_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42mad.com>      +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 12:05:50 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/19 11:42:48 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/12/29 17:48:33 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,11 @@ void	init_door(t_game *game)
 
 	door_index = 0;
 	if (door_count(game) != 0)
+	{
 		game->door = malloc(sizeof(t_door) * game->door_count);
-	if (game->door == NULL)
-		print_errors(1);
+		if (!game->door)
+			print_errors(1);
+	}
 	i = -1;
 	while (game->map.map[++i])
 	{
@@ -69,7 +71,7 @@ void	init_door(t_game *game)
 		{
 			if (game->map.map[i][j] == 'D')
 			{
-				game->door[door_index].x = j;
+				game->door[door_index].x = j; 
 				game->door[door_index].y = i;
 				game->door[door_index].open = false;
 				door_index++;
