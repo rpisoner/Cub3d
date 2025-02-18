@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_errors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42mad.com>      +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:47:44 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/20 14:22:34 by jolivare         ###   ########.fr       */
+/*   Updated: 2025/02/19 00:04:38 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,4 @@ void	check_color_format(char **str)
 		printf("Color format error\n");
 		exit (1);
 	}
-	
 }

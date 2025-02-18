@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42mad.com>      +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:55:04 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/19 12:04:01 by jolivare         ###   ########.fr       */
+/*   Updated: 2025/02/18 23:56:33 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,56 +58,64 @@ void	draw_minimap(t_game *game)
 	draw_player_on_minimap(game);
 }
 
-bool	touch(t_game *game)
+void	draw_line(t_game *game, float ray_angle)
 {
-	int	x;
-	int	y;
+	float	cos_angle = cos(ray_angle);
+	float	sin_angle = sin(ray_angle);
 
-	x = game->vars.ray_x / BLOCK_SIZE;
-	y = game->vars.ray_y / BLOCK_SIZE;
-	if (game->map.map[y][x] == '1')
-	{
-		if (game->vars.ray_y - (y * BLOCK_SIZE) < 1)
-			game->orientation = 1;
-		else if (game->vars.ray_y - (y * BLOCK_SIZE) > BLOCK_SIZE - 1)
-			game->orientation = 2;
-		else if (game->vars.ray_x - (x * BLOCK_SIZE) < 1)
-			game->orientation = 3;
-		else if (game->vars.ray_x - (x * BLOCK_SIZE) > BLOCK_SIZE - 1)
-			game->orientation = 4;
-		return (true);
-	}
-	else if (game->map.map[y][x] == 'D')
-	{
-		if (check_door_touch(x, y, game))
-			return (true);
-	}
-	return (false);
-}
-
-void	draw_line(t_game *game, float start_x)
-{
-	float	cos_angle;
-	float	sin_angle;
-	float	dist;
-	int		flag;
-
-	flag = 0;
-	cos_angle = cos(start_x);
-	sin_angle = sin(start_x);
 	game->vars.ray_x = game->player.x;
 	game->vars.ray_y = game->player.y;
-	while (!touch(game))
+	float delta_x = fabsf(1 / cos_angle);
+	float delta_y = fabsf(1 / sin_angle);
+	int step_x = (cos_angle > 0) ? 1 : -1;
+	int step_y = (sin_angle > 0) ? 1 : -1;
+	float	side_x = (step_x == 1) ? ((int)(game->vars.ray_x / BLOCK_SIZE) + 1 - game->vars.ray_x / BLOCK_SIZE) * delta_x :
+			(game->vars.ray_x / BLOCK_SIZE - (int)(game->vars.ray_x / BLOCK_SIZE)) * delta_x;
+	float	side_y = (step_y == 1) ? ((int)(game->vars.ray_y / BLOCK_SIZE) + 1 - game->vars.ray_y / BLOCK_SIZE) * delta_y :
+			(game->vars.ray_y / BLOCK_SIZE - (int)(game->vars.ray_y / BLOCK_SIZE)) * delta_y;
+
+	int hit = 0;
+	int side;
+	float wall_x, wall_y;
+	while (!hit)
 	{
-		game->vars.ray_x += cos_angle;
-		game->vars.ray_y += sin_angle;
-		if (check_ray_distance(game))
+		if (side_x < side_y)
 		{
-			flag = 1;
-			break ;
+			side_x += delta_x;
+			game->vars.ray_x = game->player.x + cos_angle * side_x;
+			side = 0;
+		}
+		else
+		{
+			side_y += delta_y;
+			game->vars.ray_y = game->player.y + sin_angle * side_y;
+			side = 1;
+		}
+		int map_x = (int)(game->vars.ray_x / BLOCK_SIZE);
+		int map_y = (int)(game->vars.ray_y / BLOCK_SIZE);
+		if (check_door_touch(map_x, map_y, game))
+    	{
+        	wall_x = game->vars.ray_x;
+        	wall_y = game->vars.ray_y;
+			side = 2;
+        	hit = 1;
+        	break;
+    	}
+		if (game->map.map[map_y][map_x] == '1')
+		{
+			wall_x = game->vars.ray_x;
+			wall_y = game->vars.ray_y;
+			hit = 1;
 		}
 	}
-	dist = fixed_distance(game->player.x, game->player.y, game);
-	if (!flag)
-		render(game, dist);
+	game->vars.ray_x = wall_x;
+	game->vars.ray_y = wall_y;
+	float dist = fixed_distance(game->player.x, game->player.y, game);
+	if (side == 0)
+		game->orientation = (cos_angle > 0) ? 3 : 4;
+	else if (side == 1)
+		game->orientation = (sin_angle > 0) ? 1 : 2;
+	else
+		game->orientation = 5;
+	render(game, dist);
 }

@@ -6,7 +6,7 @@
 /*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 16:48:52 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/04 17:43:29 by jolivare         ###   ########.fr       */
+/*   Updated: 2025/02/19 00:08:26 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,21 @@ static void	render_raycast(t_game *game, int start_y, int end)
 
 void	render(t_game *game, float dist)
 {
-	int	start_y;
-	int	end;
+	int		start_y;
+	int		end;
+	float	wall_pos;
 
 	game->vars.center_y = HEIGHT / 2;
 	game->vars.projected_height = (int)((BLOCK_SIZE / dist) * (WIDTH / 2));
 	start_y = game->vars.center_y - game->vars.projected_height / 2;
 	end = game->vars.center_y + game->vars.projected_height / 2;
 	if (game->orientation == 1 || game->orientation == 2)
-		game->texture_x = (int)game->vars.ray_x % TEXTURE_WIDTH;
+		wall_pos = game->vars.ray_x;
 	else
-		game->texture_x = (int)game->vars.ray_y % TEXTURE_WIDTH;
+		wall_pos = game->vars.ray_y;
+	wall_pos -= (int)(wall_pos / BLOCK_SIZE) *BLOCK_SIZE;
+	game->texture_x = (int)(wall_pos / BLOCK_SIZE * TEXTURE_WIDTH);
+	if (game->orientation == 4)
+		game->texture_x = TEXTURE_WIDTH - 1 - game->texture_x;
 	render_raycast(game, start_y, end);
 }

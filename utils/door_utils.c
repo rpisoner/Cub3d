@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   door_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 12:05:50 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/29 17:48:33 by rpisoner         ###   ########.fr       */
+/*   Updated: 2025/02/18 17:31:09 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,40 +94,6 @@ int	check_door_collision(t_game *game, int x, int y)
 	}
 	return (0);
 }
-
-// void	open_door(t_game *game)
-// {
-// 	int		i;
-// 	int		x;
-// 	int		y;
-	
-// 	x = (int)game->player.x / BLOCK_SIZE;
-// 	y = (int)game->player.y / BLOCK_SIZE;
-// 	i = -1;
-// 	while (++i < game->door_count)
-// 	{
-// 		if ((x == game->door[i].x && y == game->door[i].y - 1
-// 			&& !game->door[i].open) || (x == game->door[i].x 
-// 			&& y == game->door[i].y + 1
-// 			&& !game->door[i].open))
-// 			game->door[i].open = true;
-// 		else if ((x == game->door[i].x && y == game->door[i].y - 1
-// 			&& game->door[i].open) || (x == game->door[i].x
-// 			&& y == game->door[i].y + 1
-// 			&& game->door[i].open))
-// 			game->door[i].open = false;
-// 		else if ((x + 1 == game->door[i].x && y == game->door[i].y
-// 			&& !game->door[i].open) 
-// 			|| (x - 1 == game->door[i].x && y - 1 == game->door[i].y
-// 			&& !game->door[i].open))
-// 				game->door[i].open = true;
-// 		else if ((x + 1 == game->door[i].x && y == game->door[i].y
-// 			&& game->door[i].open) 
-// 			|| (x - 1 == game->door[i].x && y - 1 == game->door[i].y
-// 			&& game->door[i].open))
-// 				game->door[i].open = false;
-// 	}
-// }
 
 void	open_door(t_game *game)
 {

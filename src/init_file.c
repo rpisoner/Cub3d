@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42mad.com>      +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 13:30:24 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/12/20 14:47:51 by jolivare         ###   ########.fr       */
+/*   Updated: 2025/02/19 00:03:15 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,16 @@ static void	copy_file(t_game *game, char *file)
 	close(fd);
 }
 
+static void	check_line(char *line, int fd)
+{
+	if (line == NULL)
+	{
+		close(fd);
+		free(line);
+		print_errors(1);
+	}
+}
+
 void	init_file(t_game *game, char *file)
 {
 	int		height;
@@ -33,12 +43,7 @@ void	init_file(t_game *game, char *file)
 
 	fd = open(file, O_RDONLY);
 	line = get_next_line(fd);
-	if (line == NULL)
-	{
-		close(fd);
-		free(line);
-		print_errors(1);
-	}
+	check_line(line, fd);
 	height = 1;
 	while (line != NULL)
 	{

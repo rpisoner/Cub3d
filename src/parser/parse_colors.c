@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_colors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42mad.com>      +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 15:59:20 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/20 14:45:51 by jolivare         ###   ########.fr       */
+/*   Updated: 2025/02/19 00:00:57 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,9 @@ void	do_and_check_atoi(int *rgb, char **aux)
 		printf("Error:\n\tThird number is invalid\n");
 		exit (1);
 	}
-	
 }
 
-void assign_floor_color(t_game *game)
+void	assign_floor_color(t_game *game)
 {
 	char	**aux;
 	int		*rgb;
