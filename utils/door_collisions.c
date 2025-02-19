@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   door_collisions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:41:47 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/11 11:48:41 by jolivare         ###   ########.fr       */
+/*   Updated: 2025/02/19 00:45:11 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	is_door_up(t_game *game, int speed, float cos_angle, float sin_angle)
 
 int	is_door_down(t_game *game, int speed, float cos_angle, float sin_angle)
 {
-		float	new_x;
+	float	new_x;
 	float	new_y;
 	int		map_x;
 	int		map_y;

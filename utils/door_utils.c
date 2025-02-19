@@ -6,7 +6,7 @@
 /*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 12:05:50 by jolivare          #+#    #+#             */
-/*   Updated: 2025/02/18 17:31:09 by jolivare         ###   ########.fr       */
+/*   Updated: 2025/02/19 00:44:54 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	init_door(t_game *game)
 		{
 			if (game->map.map[i][j] == 'D')
 			{
-				game->door[door_index].x = j; 
+				game->door[door_index].x = j;
 				game->door[door_index].y = i;
 				game->door[door_index].open = false;
 				door_index++;
@@ -106,11 +106,13 @@ void	open_door(t_game *game)
 	i = -1;
 	while (++i < game->door_count)
 	{
-		if (((player_x == game->door[i].x && abs(player_y - game->door[i].y) == 1) ||
-			(player_y == game->door[i].y && abs(player_x - game->door[i].x) == 1)))
+		if (((player_x == game->door[i].x \
+					&& abs(player_y - game->door[i].y) == 1)
+				|| (player_y == game->door[i].y
+					&& abs(player_x - game->door[i].x) == 1)))
 		{
 			game->door[i].open = !game->door[i].open;
-			break;
+			break ;
 		}
 	}
 }

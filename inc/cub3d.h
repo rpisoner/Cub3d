@@ -6,7 +6,7 @@
 /*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:19:57 by jolivare          #+#    #+#             */
-/*   Updated: 2025/02/18 22:56:42 by jolivare         ###   ########.fr       */
+/*   Updated: 2025/02/19 02:08:39 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,15 @@ typedef struct s_vars
 	int		center_y;
 	int		index;
 	int		color;
+	float	delta_x;
+	float	delta_y;
+	int		step_x;
+	int		step_y;
+	float	side_x;
+	float	side_y;
+	int		side;
+	float	wall_x;
+	float	wall_y;
 }	t_vars;
 
 typedef struct s_player
@@ -137,7 +146,6 @@ typedef struct s_game
 	int			mini_y;
 	int			size_line;
 	int			orientation;
-	int			door_orientation;
 	int			door_count;
 	char		*data;
 	int			bpp;
@@ -147,6 +155,7 @@ typedef struct s_game
 	int			speed;
 	int			floor_color;
 	int			ceiling_color;
+	int			is_door;
 }	t_game;
 
 char	*get_next_line(int fd);
@@ -185,10 +194,10 @@ void	init_south_compass(t_game *game, int width, int height);
 void	init_west_compass(t_game *game, int width, int height);
 void	init_east_compass(t_game *game, int width, int height);
 void	init_door(t_game *game);
-void	render(t_game *game, float dist);
+void	render(t_game *game, float dist, float cos_angle, float sin_angle);
 void	draw_square(int x, int y, int size, int color, t_game *game);
 void	draw_minimap(t_game *game);
-void 	assign_floor_color(t_game *game);
+void	assign_floor_color(t_game *game);
 void	assign_ceiling_color(t_game *game);
 void	draw_compass(t_game *game);
 void	draw_line(t_game *game, float start_x);
@@ -196,6 +205,10 @@ void	paint_sky_color(t_game *game);
 void	paint_floor_color(t_game *game);
 float	distance(float x, float y);
 float	fixed_distance(float x1, float y1, t_game *game);
+void	assign_orientation(t_game *game, int side, \
+		float cos_angle, float sin_angle);
+void	dda(t_game *game, float cos_angle, float sin_angle);
+void	choose_ray_direction(t_game *game, float cos_angle, float sin_angle);
 bool	touch(t_game *game);
 
 //COLLISIONS
