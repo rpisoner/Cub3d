@@ -6,13 +6,13 @@
 /*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 12:05:50 by jolivare          #+#    #+#             */
-/*   Updated: 2025/02/19 00:44:54 by jolivare         ###   ########.fr       */
+/*   Updated: 2025/02/20 20:02:33 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-static int	door_count(t_game *game)
+static void	door_count(t_game *game)
 {
 	int	i;
 	int	j;
@@ -29,8 +29,13 @@ static int	door_count(t_game *game)
 				count++;
 		}
 	}
+	if (count != 0)
+	{
+		game->door = malloc(sizeof(t_door) * count);
+		if (!game->door)
+			print_errors(1);
+	}
 	game->door_count = count;
-	return (count);
 }
 
 int	check_door_touch(int ray_x, int ray_y, t_game *game)
@@ -42,10 +47,7 @@ int	check_door_touch(int ray_x, int ray_y, t_game *game)
 	{
 		if (ray_x == game->door[i].x && ray_y == game->door[i].y
 			&& !game->door[i].open)
-		{
-			game->orientation = 5;
 			return (1);
-		}
 	}
 	return (0);
 }
@@ -57,17 +59,12 @@ void	init_door(t_game *game)
 	int	j;
 
 	door_index = 0;
-	if (door_count(game) != 0)
-	{
-		game->door = malloc(sizeof(t_door) * game->door_count);
-		if (!game->door)
-			print_errors(1);
-	}
+	door_count(game);
 	i = -1;
 	while (game->map.map[++i])
 	{
-		j = 0;
-		while (game->map.map[i][j])
+		j = -1;
+		while (game->map.map[i][++j])
 		{
 			if (game->map.map[i][j] == 'D')
 			{
@@ -76,7 +73,6 @@ void	init_door(t_game *game)
 				game->door[door_index].open = false;
 				door_index++;
 			}
-			j++;
 		}
 	}
 }

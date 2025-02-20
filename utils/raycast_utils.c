@@ -6,7 +6,7 @@
 /*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 00:39:53 by jolivare          #+#    #+#             */
-/*   Updated: 2025/02/19 01:55:11 by jolivare         ###   ########.fr       */
+/*   Updated: 2025/02/20 19:31:29 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	chech_ray_collision(t_game *game)
 		game->vars.wall_x = game->vars.ray_x;
 		game->vars.wall_y = game->vars.ray_y;
 		game->is_door = 1;
-		game->orientation = 5;
+		game->door_orientation = game->orientation;
 		return (1);
 	}
 	if (game->map.map[map_y][map_x] == '1')
@@ -93,11 +93,15 @@ void	choose_ray_direction(t_game *game, float cos_angle, float sin_angle)
 	else
 		game->vars.step_y = -1;
 	if (game->vars.step_x == 1)
-		game->vars.side_x = ((int)(game->vars.ray_x / BLOCK_SIZE) + 1 - game->vars.ray_x / BLOCK_SIZE) * game->vars.delta_x;
+		game->vars.side_x = ((int)(game->vars.ray_x / BLOCK_SIZE) + 1 - \
+		game->vars.ray_x / BLOCK_SIZE) * game->vars.delta_x;
 	else
-		game->vars.side_x = (game->vars.ray_x / BLOCK_SIZE - (int)(game->vars.ray_x / BLOCK_SIZE)) * game->vars.delta_x;
+		game->vars.side_x = (game->vars.ray_x / BLOCK_SIZE - \
+			(int)(game->vars.ray_x / BLOCK_SIZE)) * game->vars.delta_x;
 	if (game->vars.step_y == 1)
-		game->vars.side_y = ((int)(game->vars.ray_y / BLOCK_SIZE) + 1 - game->vars.ray_y / BLOCK_SIZE) * game->vars.delta_y;
+		game->vars.side_y = ((int)(game->vars.ray_y / BLOCK_SIZE) + 1 - \
+		game->vars.ray_y / BLOCK_SIZE) * game->vars.delta_y;
 	else
-		game->vars.side_y = (game->vars.ray_y / BLOCK_SIZE - (int)(game->vars.ray_y / BLOCK_SIZE)) * game->vars.delta_y;
+		game->vars.side_y = (game->vars.ray_y / BLOCK_SIZE - \
+		(int)(game->vars.ray_y / BLOCK_SIZE)) * game->vars.delta_y;
 }

@@ -6,7 +6,7 @@
 #    By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/25 12:23:04 by jolivare          #+#    #+#              #
-#    Updated: 2025/02/19 00:48:22 by jolivare         ###   ########.fr        #
+#    Updated: 2025/02/20 20:01:00 by jolivare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRC = src/init_map.c inc/get_next_line/get_next_line.c src/errors/print_errors.c
 		src/parser/parse_config.c utils/free.c src/visuals/init_window.c src/valid_map.c \
 		src/visuals/draw.c src/visuals/draw_floor_ceiling.c utils/collisions.c \
 		src/gameplay/movement.c src/gameplay/keyhook.c src/visuals/textures.c \
-		src/init_file.c src/init_game.c src/parser/parse_config2.c src/parser/parse.c utils/dev_utils.c \
+		src/init_file.c src/init_game.c src/parser/parse_config2.c src/parser/parse.c utils/minimap_utils.c \
 		utils/assign_textures.c utils/distance.c src/visuals/render.c utils/check_angle.c utils/door_utils.c \
 		utils/assign_compass_textures.c src/visuals/compass.c utils/valid_map_utils.c utils/door_collisions.c \
 		src/parser/parse_colors.c utils/raycast_utils.c
@@ -92,9 +92,9 @@ re: fclean all
 
 r: all clean
 	@clear
-	@./$(NAME) maps/map.cub
+	@./$(NAME) maps/map2.cub
 
 v: all clean
 	@clear
-	@valgrind --leak-check=full ./$(NAME) maps/map.cub
+	@valgrind --leak-check=full ./$(NAME) maps/map2.cub
 .PHONY: all clean fclean re c

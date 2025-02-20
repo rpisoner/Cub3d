@@ -6,7 +6,7 @@
 /*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 12:04:32 by rpisoner          #+#    #+#             */
-/*   Updated: 2025/02/19 01:54:58 by jolivare         ###   ########.fr       */
+/*   Updated: 2025/02/20 19:16:43 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ void	init_game(t_game *game)
 	game->ceiling_color = 0;
 	game->map.textures_ready = false;
 	game->speed = 4;
+	game->limit_steps = 0;
 	init_player(game);
 }

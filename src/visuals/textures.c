@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:06:10 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/09 16:56:24 by jolivare         ###   ########.fr       */
+/*   Updated: 2025/02/20 18:25:30 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	get_texture_color(void *texture, t_game *game, int width, int height)
 
 	if (game->texture_x < 0 || game->texture_x >= width || game->texture_y < 0 \
 		|| game->texture_y >= height)
-		return (0x000000);
+		return (0x0000000);
 	data = mlx_get_data_addr(texture, &bpp, &size_line, &endian);
 	if (!data)
 		return (0x000000);

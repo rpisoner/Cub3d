@@ -6,7 +6,7 @@
 /*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:19:57 by jolivare          #+#    #+#             */
-/*   Updated: 2025/02/19 02:08:39 by jolivare         ###   ########.fr       */
+/*   Updated: 2025/02/20 19:50:11 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ typedef struct s_vars
 {
 	float	ray_x;
 	float	ray_y;
-	int		projected_height;
+	float	projected_height;
 	int		center_y;
 	int		index;
 	int		color;
@@ -146,6 +146,7 @@ typedef struct s_game
 	int			mini_y;
 	int			size_line;
 	int			orientation;
+	int			door_orientation;
 	int			door_count;
 	char		*data;
 	int			bpp;
@@ -156,6 +157,7 @@ typedef struct s_game
 	int			floor_color;
 	int			ceiling_color;
 	int			is_door;
+	int			limit_steps;
 }	t_game;
 
 char	*get_next_line(int fd);
@@ -194,8 +196,7 @@ void	init_south_compass(t_game *game, int width, int height);
 void	init_west_compass(t_game *game, int width, int height);
 void	init_east_compass(t_game *game, int width, int height);
 void	init_door(t_game *game);
-void	render(t_game *game, float dist, float cos_angle, float sin_angle);
-void	draw_square(int x, int y, int size, int color, t_game *game);
+void	render(t_game *game, float dist);
 void	draw_minimap(t_game *game);
 void	assign_floor_color(t_game *game);
 void	assign_ceiling_color(t_game *game);
@@ -209,7 +210,6 @@ void	assign_orientation(t_game *game, int side, \
 		float cos_angle, float sin_angle);
 void	dda(t_game *game, float cos_angle, float sin_angle);
 void	choose_ray_direction(t_game *game, float cos_angle, float sin_angle);
-bool	touch(t_game *game);
 
 //COLLISIONS
 int		is_wall_up(t_game *game, int speed, float cos_angle, float sin_angle);
@@ -229,12 +229,8 @@ int		check_door_touch(int ray_x, int ray_y, t_game *game);
 int		check_door_collision(t_game *game, int x, int y);
 
 void	check_angle(t_game *game);
-int		check_ray_distance(t_game *game);
 void	print_errors(int code);
 void	check_color_format(char **str);
-
-//DEV UTILS
-void	print_map(t_game *game);
 
 //FREE STUFF
 void	free_str(char **str);

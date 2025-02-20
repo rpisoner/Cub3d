@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42mad.com>      +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:08:06 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/19 11:50:07 by jolivare         ###   ########.fr       */
+/*   Updated: 2025/02/20 19:44:08 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,6 @@ void	put_pixel(int x, int y, int color, t_game *game)
 	game->data[index] = color & 0xFF;
 	game->data[index + 1] = (color >> 8) & 0xFF;
 	game->data[index + 2] = (color >> 16) & 0xFF;
-}
-
-void	draw_square(int x, int y, int size, int color, t_game *game)
-{
-	int	i;
-
-	i = -1;
-	while (++i < size)
-		put_pixel(x + i, y, color, game);
-	i = -1;
-	while (++i < size)
-		put_pixel(x, y + i, color, game);
-	i = -1;
-	while (++i < size)
-		put_pixel(x + size, y + i, color, game);
-	i = -1;
-	while (++i < size)
-		put_pixel(x + i, y + size, color, game);
 }
 
 void	clear_image(t_game *game)
