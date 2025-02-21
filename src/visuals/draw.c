@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:55:04 by jolivare          #+#    #+#             */
-/*   Updated: 2025/02/20 19:43:51 by jolivare         ###   ########.fr       */
+/*   Updated: 2025/02/21 10:59:12 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	draw_line(t_game *game, float ray_angle)
 	choose_ray_direction(game, cos_angle, sin_angle);
 	dda(game, cos_angle, sin_angle);
 	dist = fixed_distance(game->player.x, game->player.y, game);
-	if (dist > INT_MAX)
+	if (dist > (float)INT_MAX)
 		return ;
 	assign_orientation(game, game->vars.side, cos_angle, sin_angle);
 	render(game, dist);

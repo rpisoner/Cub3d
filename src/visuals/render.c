@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 16:48:52 by jolivare          #+#    #+#             */
-/*   Updated: 2025/02/20 18:53:13 by jolivare         ###   ########.fr       */
+/*   Updated: 2025/02/21 11:27:10 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static int	get_color(t_game *game)
 {
 	int	color;
 
+	color = 0;
 	if (game->is_door == 1)
 		color = get_texture_color(game->door_texture, \
 			game, TEXTURE_WIDTH, TEXTURE_WIDTH);

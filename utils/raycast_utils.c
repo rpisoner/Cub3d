@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 00:39:53 by jolivare          #+#    #+#             */
-/*   Updated: 2025/02/20 19:31:29 by jolivare         ###   ########.fr       */
+/*   Updated: 2025/02/21 11:43:28 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,30 @@
 void	assign_orientation(t_game *game, int side, float cos_angle,
 		float sin_angle)
 {
-	if (game->is_door == 0)
+	if (side == 0)
 	{
-		if (side == 0)
+		if (cos_angle > 0)
 		{
-			if (cos_angle > 0)
-				game->orientation = 3;
-			else
-				game->orientation = 4;
+			game->orientation = 3;
+			game->door_orientation = 3;
 		}
-		else if (side == 1)
+		else
 		{
-			if (sin_angle > 0)
-				game->orientation = 1;
-			else
-				game->orientation = 2;
+			game->door_orientation = 4;
+			game->orientation = 4;
+		}
+	}
+	else
+	{
+		if (sin_angle > 0)
+		{
+			game->orientation = 1;
+			game->door_orientation = 1;
+		}
+		else
+		{
+			game->orientation = 2;
+			game->door_orientation = 2;
 		}
 	}
 }
