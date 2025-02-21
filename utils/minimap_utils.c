@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42mad.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 19:35:45 by rpisoner          #+#    #+#             */
-/*   Updated: 2025/02/20 19:51:20 by jolivare         ###   ########.fr       */
+/*   Updated: 2025/02/21 12:12:25 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,10 @@ void	draw_minimap(t_game *game)
 			if (game->map.map[y][x] == '1')
 				draw_walls(x * MINIMAP_BLOCK_SIZE, y * MINIMAP_BLOCK_SIZE,
 					game);
+			else if (game->map.map[y][x] == 'D' && \
+				check_door_open(game, x, y) == 1)
+				draw_door_on_minimap(game, x * \
+				MINIMAP_BLOCK_SIZE, y * MINIMAP_BLOCK_SIZE);
 		}
 	}
 	draw_player_on_minimap(game);

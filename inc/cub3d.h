@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42mad.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:19:57 by jolivare          #+#    #+#             */
-/*   Updated: 2025/02/20 19:50:11 by jolivare         ###   ########.fr       */
+/*   Updated: 2025/02/21 12:10:18 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,6 +227,10 @@ int		is_door_right(t_game *game, int speed, \
 void	open_door(t_game *game);
 int		check_door_touch(int ray_x, int ray_y, t_game *game);
 int		check_door_collision(t_game *game, int x, int y);
+int		check_door_open(t_game *game, int x, int y);
+void	draw_door_on_minimap(t_game *game, int x, int y);
+void	assign_e_w(t_game *game, float cos_angle);
+void	assign_n_s(t_game *game, float sin_angle);
 
 void	check_angle(t_game *game);
 void	print_errors(int code);

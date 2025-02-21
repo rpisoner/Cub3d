@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+         #
+#    By: jolivare <jolivare@student.42mad.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/25 12:23:04 by jolivare          #+#    #+#              #
-#    Updated: 2025/02/20 20:01:00 by jolivare         ###   ########.fr        #
+#    Updated: 2025/02/21 12:04:24 by jolivare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRC = src/init_map.c inc/get_next_line/get_next_line.c src/errors/print_errors.c
 		src/init_file.c src/init_game.c src/parser/parse_config2.c src/parser/parse.c utils/minimap_utils.c \
 		utils/assign_textures.c utils/distance.c src/visuals/render.c utils/check_angle.c utils/door_utils.c \
 		utils/assign_compass_textures.c src/visuals/compass.c utils/valid_map_utils.c utils/door_collisions.c \
-		src/parser/parse_colors.c utils/raycast_utils.c
+		src/parser/parse_colors.c utils/raycast_utils.c utils/door_utils2.c
 
 OBJ = $(SRC:.c=.o)
 LIBFT = inc/libft/libft.a

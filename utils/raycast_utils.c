@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42mad.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 00:39:53 by jolivare          #+#    #+#             */
-/*   Updated: 2025/02/21 11:43:28 by rpisoner         ###   ########.fr       */
+/*   Updated: 2025/02/21 12:11:10 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,9 @@ void	assign_orientation(t_game *game, int side, float cos_angle,
 		float sin_angle)
 {
 	if (side == 0)
-	{
-		if (cos_angle > 0)
-		{
-			game->orientation = 3;
-			game->door_orientation = 3;
-		}
-		else
-		{
-			game->door_orientation = 4;
-			game->orientation = 4;
-		}
-	}
+		assign_e_w(game, cos_angle);
 	else
-	{
-		if (sin_angle > 0)
-		{
-			game->orientation = 1;
-			game->door_orientation = 1;
-		}
-		else
-		{
-			game->orientation = 2;
-			game->door_orientation = 2;
-		}
-	}
+		assign_n_s(game, sin_angle);
 }
 
 static int	chech_ray_collision(t_game *game)
@@ -56,7 +34,6 @@ static int	chech_ray_collision(t_game *game)
 		game->vars.wall_x = game->vars.ray_x;
 		game->vars.wall_y = game->vars.ray_y;
 		game->is_door = 1;
-		game->door_orientation = game->orientation;
 		return (1);
 	}
 	if (game->map.map[map_y][map_x] == '1')
