@@ -6,7 +6,7 @@
 /*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 16:48:52 by jolivare          #+#    #+#             */
-/*   Updated: 2025/02/21 11:27:10 by rpisoner         ###   ########.fr       */
+/*   Updated: 2025/02/22 10:09:24 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,18 @@ static int	get_color(t_game *game)
 	int	color;
 
 	color = 0;
-	if (game->is_door == 1)
-		color = get_texture_color(game->door_texture, \
+	if (game->orientation == 1)
+		color = get_texture_color(game->north_texture, \
 			game, TEXTURE_WIDTH, TEXTURE_WIDTH);
-	else
-	{
-		if (game->orientation == 1)
-			color = get_texture_color(game->north_texture, \
-				game, TEXTURE_WIDTH, TEXTURE_WIDTH);
-		else if (game->orientation == 2)
-			color = get_texture_color(game->south_texture, \
-				game, TEXTURE_WIDTH, TEXTURE_WIDTH);
-		else if (game->orientation == 3)
-			color = get_texture_color(game->west_texture, \
-				game, TEXTURE_WIDTH, TEXTURE_WIDTH);
-		else if (game->orientation == 4)
-			color = get_texture_color(game->east_texture, \
-				game, TEXTURE_WIDTH, TEXTURE_WIDTH);
-	}
+	else if (game->orientation == 2)
+		color = get_texture_color(game->south_texture, \
+			game, TEXTURE_WIDTH, TEXTURE_WIDTH);
+	else if (game->orientation == 3)
+		color = get_texture_color(game->west_texture, \
+			game, TEXTURE_WIDTH, TEXTURE_WIDTH);
+	else if (game->orientation == 4)
+		color = get_texture_color(game->east_texture, \
+			game, TEXTURE_WIDTH, TEXTURE_WIDTH);
 	return (color);
 }
 
@@ -59,20 +53,10 @@ static float	calculate_wall_pos(t_game *game)
 {
 	float	wall_pos;
 
-	if (game->is_door)
-	{
-		if (game->door_orientation == 1 || game->door_orientation == 2)
-			wall_pos = game->vars.ray_x;
-		else
-			wall_pos = game->vars.ray_y;
-	}
+	if (game->orientation == 1 || game->orientation == 2)
+		wall_pos = game->vars.ray_x;
 	else
-	{
-		if (game->orientation == 1 || game->orientation == 2)
-			wall_pos = game->vars.ray_x;
-		else
-			wall_pos = game->vars.ray_y;
-	}
+		wall_pos = game->vars.ray_y;
 	wall_pos = fmod(wall_pos, BLOCK_SIZE);
 	return (wall_pos);
 }

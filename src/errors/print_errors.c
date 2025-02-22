@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_errors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:47:44 by jolivare          #+#    #+#             */
-/*   Updated: 2025/02/19 00:04:38 by jolivare         ###   ########.fr       */
+/*   Updated: 2025/02/22 10:25:57 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static void	print_errors2(int code)
 {
 	if (code == 11)
 		printf("Error\nEl mapa no está rodeado por muros\n");
+	else if (code == 12)
+		printf("Error\nEl archivo no tiene mapa\n");
 }
 
 void	print_errors(int code)

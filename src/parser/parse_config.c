@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_config.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 13:10:12 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/09 16:57:36 by jolivare         ###   ########.fr       */
+/*   Updated: 2025/02/22 10:10:45 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,5 @@ void	parse_config(t_game *game)
 			game->map.textures_ready = true;
 		i++;
 	}
-	init_door_texture(game, size);
 	init_map(game, i);
 }

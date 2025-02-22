@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:56:47 by jolivare          #+#    #+#             */
-/*   Updated: 2025/02/20 19:47:15 by jolivare         ###   ########.fr       */
+/*   Updated: 2025/02/22 10:10:35 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	check_char(t_game *game, int i, int j, int *player_symbols)
 
 	c = game->map.map[i][j];
 	if (c != '1' && c != '0' && c != 'N' && c != 'S' && c != 'W' && c != 'E'
-		&& c != ' ' && c != 'D')
+		&& c != ' ')
 		print_errors(8);
 	if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
 	{
@@ -51,7 +51,6 @@ static void	check_valid_map(t_game *game)
 			check_char(game, i, j, &player_symbols);
 		i++;
 	}
-	init_door(game);
 	if (player_symbols != 1)
 		print_errors(7);
 	if (!is_map_valid(game->map.map, game->map.y_size))
@@ -100,8 +99,10 @@ void	init_map(t_game *game, int i)
 {
 	if (game->map.textures_ready == false)
 		print_errors(6);
-	while (game->map.raw_file[i][0] == '\n')
+	while (game->map.raw_file[i] && game->map.raw_file[i][0] == '\n')
 		i++;
+	if (!game->map.raw_file[i])
+		print_errors(12);
 	game->map.map = (char **)malloc((game->map.y_size - i + 1)
 			* sizeof(char *));
 	if (!game->map.map)

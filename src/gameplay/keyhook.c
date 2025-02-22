@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyhook.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 12:56:33 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/09 18:22:42 by jolivare         ###   ########.fr       */
+/*   Updated: 2025/02/22 10:07:52 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ int	key_press(int keycode, t_game *game)
 		game->player.key_left = true;
 	if (keycode == D)
 		game->player.key_right = true;
-	if (keycode == E)
-		game->player.key_door = true;
 	if (keycode == LEFT)
 		game->player.left_rotation = true;
 	if (keycode == RIGHT)
@@ -43,8 +41,6 @@ int	key_release(int keycode, t_player *player)
 		player->key_left = false;
 	if (keycode == D)
 		player->key_right = false;
-	if (keycode == E)
-		player->key_door = false;
 	if (keycode == LEFT)
 		player->left_rotation = false;
 	if (keycode == RIGHT)

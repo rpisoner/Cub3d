@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42mad.com>      +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 00:39:53 by jolivare          #+#    #+#             */
-/*   Updated: 2025/02/21 12:11:10 by jolivare         ###   ########.fr       */
+/*   Updated: 2025/02/22 10:17:55 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,19 @@ void	assign_orientation(t_game *game, int side, float cos_angle,
 		float sin_angle)
 {
 	if (side == 0)
-		assign_e_w(game, cos_angle);
+	{
+		if (cos_angle > 0)
+			game->orientation = 3;
+		else
+			game->orientation = 4;
+	}
 	else
-		assign_n_s(game, sin_angle);
+	{
+		if (sin_angle > 0)
+			game->orientation = 1;
+		else
+			game->orientation = 2;
+	}
 }
 
 static int	chech_ray_collision(t_game *game)
@@ -26,16 +36,8 @@ static int	chech_ray_collision(t_game *game)
 	int		map_x;
 	int		map_y;
 
-	game->is_door = 0;
 	map_x = (int)(game->vars.ray_x / BLOCK_SIZE);
 	map_y = (int)(game->vars.ray_y / BLOCK_SIZE);
-	if (check_door_touch(map_x, map_y, game))
-	{
-		game->vars.wall_x = game->vars.ray_x;
-		game->vars.wall_y = game->vars.ray_y;
-		game->is_door = 1;
-		return (1);
-	}
 	if (game->map.map[map_y][map_x] == '1')
 	{
 		game->vars.wall_x = game->vars.ray_x;

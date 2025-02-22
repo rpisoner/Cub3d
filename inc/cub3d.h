@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42mad.com>      +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:19:57 by jolivare          #+#    #+#             */
-/*   Updated: 2025/02/21 12:10:18 by jolivare         ###   ########.fr       */
+/*   Updated: 2025/02/22 10:06:41 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # include <stdbool.h>
 # include <unistd.h>
 # include <limits.h>
-# define DOOR "textures/door.xpm"
 # define COMPASS_NORTH "textures/compass/compass_north.xpm"
 # define COMPASS_SOUTH "textures/compass/compass_south.xpm"
 # define COMPASS_WEST "textures/compass/compass_west.xpm"
@@ -32,7 +31,6 @@
 # define COMPASS_SOUTH_EAST "textures/compass/compass_southeast.xpm"
 # define COLOR_SKY 0x87CEEB
 # define COLOR_FLOOR 0x8B4513
-# define COLOR_DOOR  0x800080
 # define MINIMAP_BG_COLOR 0x808080
 # define MINIMAP_BG_WIDTH 300
 # define MINIMAP_BG_HEIGHT 200
@@ -98,8 +96,6 @@ typedef struct s_player
 	bool	key_down;
 	bool	key_left;
 	bool	key_right;
-	bool	key_door;
-	bool	key_door_pressed;
 
 	bool	left_rotation;
 	bool	right_rotation;
@@ -114,24 +110,16 @@ typedef struct s_map
 	int		x_size;
 }	t_map;
 
-typedef struct s_door
-{
-	int		x;
-	int		y;
-	bool	open;
-}	t_door;
 typedef struct s_game
 {
 	t_map		map;
 	t_window	window;
 	t_player	player;
 	t_vars		vars;
-	t_door		*door;
 	void		*north_texture;
 	void		*south_texture;
 	void		*east_texture;
 	void		*west_texture;
-	void		*door_texture;
 	void		*north_compass;
 	void		*south_compass;
 	void		*west_compass;
@@ -146,8 +134,6 @@ typedef struct s_game
 	int			mini_y;
 	int			size_line;
 	int			orientation;
-	int			door_orientation;
-	int			door_count;
 	char		*data;
 	int			bpp;
 	int			endian;
@@ -156,7 +142,6 @@ typedef struct s_game
 	int			speed;
 	int			floor_color;
 	int			ceiling_color;
-	int			is_door;
 	int			limit_steps;
 }	t_game;
 
@@ -190,12 +175,10 @@ void	put_pixel(int x, int y, int color, t_game *game);
 int		draw_loop(t_game *game);
 void	draw_minimap_background(t_game *game);
 int		get_texture_color(void *texture, t_game *game, int width, int height);
-void	init_door_texture(t_game *game, int size);
 void	init_north_compass(t_game *game, int width, int height);
 void	init_south_compass(t_game *game, int width, int height);
 void	init_west_compass(t_game *game, int width, int height);
 void	init_east_compass(t_game *game, int width, int height);
-void	init_door(t_game *game);
 void	render(t_game *game, float dist);
 void	draw_minimap(t_game *game);
 void	assign_floor_color(t_game *game);
@@ -219,16 +202,6 @@ int		is_wall_left(t_game *game, int speed, \
 		float cos_angle, float sin_angle);
 int		is_wall_right(t_game *game, int speed, \
 		float cos_angle, float sin_angle);
-int		is_door_up(t_game *game, int speed, float cos_angle, float sin_angle);
-int		is_door_down(t_game *game, int speed, float cos_angle, float sin_angle);
-int		is_door_left(t_game *game, int speed, float cos_angle, float sin_angle);
-int		is_door_right(t_game *game, int speed, \
-		float cos_angle, float sin_angle);
-void	open_door(t_game *game);
-int		check_door_touch(int ray_x, int ray_y, t_game *game);
-int		check_door_collision(t_game *game, int x, int y);
-int		check_door_open(t_game *game, int x, int y);
-void	draw_door_on_minimap(t_game *game, int x, int y);
 void	assign_e_w(t_game *game, float cos_angle);
 void	assign_n_s(t_game *game, float sin_angle);
 
@@ -238,7 +211,6 @@ void	check_color_format(char **str);
 
 //FREE STUFF
 void	free_str(char **str);
-void	free_door(t_game *game);
 void	free_matrix(int **matrix);
 
 #endif

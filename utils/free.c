@@ -6,7 +6,7 @@
 /*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 15:57:37 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/09 16:10:46 by rpisoner         ###   ########.fr       */
+/*   Updated: 2025/02/22 10:12:01 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,6 @@ void	free_str(char **str)
 	while (str[++i])
 		free(str[i]);
 	free (str);
-}
-
-void	free_door(t_game *game)
-{
-	free(game->door);
 }
 
 void	free_matrix(int **matrix)

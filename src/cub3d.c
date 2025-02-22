@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42mad.com>      +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:29:49 by jolivare          #+#    #+#             */
-/*   Updated: 2024/12/20 14:37:49 by jolivare         ###   ########.fr       */
+/*   Updated: 2025/02/22 10:07:09 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	exit_game(t_game *game)
 {
-	free(game->door);
 	mlx_destroy_image(game->window.mlx, game->south_compass);
 	mlx_destroy_image(game->window.mlx, game->south_east_compass);
 	mlx_destroy_image(game->window.mlx, game->south_west_compass);
@@ -27,7 +26,6 @@ int	exit_game(t_game *game)
 	mlx_destroy_image(game->window.mlx, game->south_texture);
 	mlx_destroy_image(game->window.mlx, game->west_texture);
 	mlx_destroy_image(game->window.mlx, game->east_texture);
-	mlx_destroy_image(game->window.mlx, game->door_texture);
 	mlx_destroy_window(game->window.mlx, game->window.window);
 	exit (0);
 }
