@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+         #
+#    By: jolivare <jolivare@student.42mad.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/25 12:23:04 by jolivare          #+#    #+#              #
-#    Updated: 2025/02/22 10:27:39 by rpisoner         ###   ########.fr        #
+#    Updated: 2025/02/22 11:52:02 by jolivare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -114,10 +114,11 @@ clean:
 	@rm -f $(OBJ)
 	@printf "$(R)All .o files removed$(END)\n"
 
-fclean: clean
+fclean: clean bclean
 	@$(MAKE) fclean -sC inc/libft/
 	@printf "$(R)Executable libft removed$(END)\n"
 	@rm -f $(NAME)
+	@rm -f $(BONUS_NAME)
 	@printf "$(R)Executable file removed$(END)\n"
 
 bclean:
