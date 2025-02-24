@@ -6,7 +6,7 @@
 #    By: jolivare <jolivare@student.42mad.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/25 12:23:04 by jolivare          #+#    #+#              #
-#    Updated: 2025/02/22 11:52:02 by jolivare         ###   ########.fr        #
+#    Updated: 2025/02/22 12:32:39 by jolivare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,8 +41,8 @@ BONUS_SRC = bonus/src/init_map.c bonus/inc/get_next_line/get_next_line.c bonus/s
 BONUS_OBJ = $(BONUS_SRC:.c=.o)
 
 BONUS_LIBFT = bonus/inc/libft/libft.a
-BONUS_MLX = bonus/mlx/libmlx.a
-BONUS_MLX_FLAGS = -L ./bonus/mlx -lmlx -lXext -lX11 -lm
+BONUS_MLX = $(MLX)
+BONUS_MLX_FLAGS = -L ./mlx -lmlx -lXext -lX11 -lm
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I inc -I inc/libft -g3
@@ -95,11 +95,6 @@ $(BONUS_LIBFT):
 	@$(MAKE) -sC bonus/inc/libft/
 	@printf "$(G)Bonus Libft:\tcompiled!📚$(END)\n"
 
-$(BONUS_MLX):
-	@printf "$(Y)Compiling bonus mlx...$(END)\n"
-	@$(MAKE) -sC bonus/mlx/
-	@printf "$(G)Bonus Mlx:\tcompiled!🎮$(END)\n"
-
 $(BONUS_NAME): $(BONUS_OBJ) $(BONUS_LIBFT) $(BONUS_MLX)
 	@printf "$(Y)Compiling Cub3D Bonus...$(END)\n"
 	@$(CC) $(CFLAGS) $(BONUS_OBJ) -o $(BONUS_NAME) $(BONUS_MLX_FLAGS) $(BONUS_MLX) $(BONUS_LIBFT)
@@ -127,7 +122,7 @@ bclean:
 	@$(MAKE) -sC bonus/inc/libft/ clean
 	@printf "$(Y)Libft$(END)$(R) .o files removed$(END)\n"
 	@printf "$(Y)MLX messages:$(END)\n"
-	@$(MAKE) -sC bonus/mlx/ clean
+	@$(MAKE) -sC mlx/ clean
 	@printf "$(Y)MLX$(END)$(R) .o files removed$(END)\n"
 
 bfclean: bclean
