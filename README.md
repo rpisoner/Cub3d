@@ -1,5 +1,7 @@
 # 🎮 Cub3D
 
+Made in colaboration with [rpisoner](https://github.com/rpisoner)
+
 ![Gameplay](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3hreXFkZHA0YjQ2bXBrY3c3cHA1azh5ZW1iOW91ZjZoZmU0cGh2ciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ZzkaHLO4BjvpTVWXb8/giphy.gif)
 
 **Cub3D** is a 3D raycasting project inspired by *Wolfenstein 3D*, developed using the **MiniLibX** library. It renders a 3D environment from a 2D map, handling player movement, interactions, and basic game mechanics.
