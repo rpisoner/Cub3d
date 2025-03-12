@@ -1,6 +1,6 @@
 # 🎮 Cub3D
 
-Made in colaboration with [rpisoner](https://github.com/rpisoner)
+Made in colaboration with [jaimeol](https://github.com/jaimeol)
 
 ![Gameplay](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3hreXFkZHA0YjQ2bXBrY3c3cHA1azh5ZW1iOW91ZjZoZmU0cGh2ciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ZzkaHLO4BjvpTVWXb8/giphy.gif)
 
